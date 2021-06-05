@@ -9,66 +9,66 @@ import Glob from 'glob';
 const glob = promisify(Glob);
 
 export class Client extends BaseClient {
-	public readonly logger: Consola;
-	public readonly events = new Collection<string, Event>();
-	public readonly commands = new Collection<string, Command>();
-	public readonly owners = ['566155739652030465', '576580130344927243'];
+    public readonly logger: Consola;
+    public readonly events = new Collection<string, Event>();
+    public readonly commands = new Collection<string, Command>();
+    public readonly owners = ['566155739652030465', '576580130344927243'];
 
-	public constructor() {
-		super({
-			intents: [Intents.NON_PRIVILEGED, Intents.FLAGS.GUILDS],
-			partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER'],
-			presence: {
-				activities: [
-					{
-						name: 'Oasis go to the moon!',
-						type: 'WATCHING',
-					},
-				],
-				status: 'online',
-			},
-		});
+    public constructor() {
+        super({
+            intents: [Intents.NON_PRIVILEGED, Intents.FLAGS.GUILDS],
+            partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER'],
+            presence: {
+                activities: [
+                    {
+                        name: 'Oasis go to the moon!',
+                        type: 'WATCHING',
+                    },
+                ],
+                status: 'online',
+            },
+        });
 
-		this.logger = consola.create({ level: 5 });
-	}
+        this.logger = consola.create({ level: 5 });
+    }
 
-	public get directory() {
-		return `${dirname(require.main?.filename!)}${sep}`;
-	}
+    public get directory() {
+        return `${dirname(require.main?.filename!)}${sep}`;
+    }
 
-	public async login(token = process.env.DISCORD_TOKEN) {
-		await this.loadCommands();
-		await this.loadEvents();
+    public async login(token = process.env.DISCORD_TOKEN) {
+        await this.loadCommands();
+        await this.loadEvents();
 
-		return super.login(token);
-	}
+        return super.login(token);
+    }
 
-	public async loadEvents() {
-		const events = await glob(`${this.directory}events/**/*.js`);
+    public async loadEvents() {
+        const events = await glob(`${this.directory}events/**/*.js`);
 
-		for (const eventFile of events) {
-			delete require.cache[eventFile];
+        for (const eventFile of events) {
+            delete require.cache[eventFile];
 
-			const File = require(eventFile);
-			const event = new File(this) as Event;
+            const File = require(eventFile);
+            const event = new File(this) as Event;
 
-			this.logger.info(`Loaded event: ${event.name}`);
-			this.events.set(event.name, event);
-			this[event.type](event.name, (...args) => event.run(...args));
-		}
-	}
+            this.logger.info(`Loaded event: ${event.name}`);
+            this.events.set(event.name, event);
+            this[event.type](event.name, (...args) => event.run(...args));
+        }
+    }
 
-	public async loadCommands() {
-		const commands = await glob(`${this.directory}commands/**/*.js`);
+    public async loadCommands() {
+        const commands = await glob(`${this.directory}commands/**/*.js`);
 
-		for (const commandFile of commands) {
-			delete require.cache[commandFile];
+        for (const commandFile of commands) {
+            delete require.cache[commandFile];
 
-			const File = require(commandFile);
-			const command = new File(this) as Command;
+            const File = require(commandFile);
+            const command = new File(this) as Command;
 
-			this.logger.info(`Loaded command: ${command.name}`);
-			this.commands.set(command.name, command);
-		}
-	}
+            this.logger.info(`Loaded command: ${command.name}`);
+            this.commands.set(command.name, command);
+        }
+    }
 }

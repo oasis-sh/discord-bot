@@ -1,86 +1,87 @@
 {
-	"name": "@oasis-sh/discord-bot",
-	"version": "1.0.0",
-	"description": "The official discord bot for oasis.",
-	"main": "dist/index.js",
-	"private": true,
-	"scripts": {
-		"test": "eslint .",
-		"build": "rimraf dist && tsc && tsc-alias",
-		"prettier": "prettier . --write",
-		"start": "yarn build && node ."
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/oasis-sh/discord-bot.git"
-	},
-	"keywords": [
-		"discord",
-		"bot",
-		"discord-bot",
-		"discord.js",
-		"slash-commands",
-		"oasis",
-		"oasis-sh"
-	],
-	"author": "Yoshida Tomio <https://github.com/1chiSensei> (mail@tomio.codes)",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/oasis-sh/discord-bot/issues"
-	},
-	"homepage": "https://github.com/oasis-sh/discord-bot#readme",
-	"dependencies": {
-		"@octokit/request": "^5.5.0",
-		"@sapphire/fetch": "^1.0.2",
-		"@sapphire/type": "^2.0.4",
-		"common-tags": "^1.8.0",
-		"consola": "^2.15.3",
-		"discord.js": "dev",
-		"dotenv": "^10.0.0",
-		"glob": "^7.1.7",
-		"prisma": "^2.24.1"
-	},
-	"devDependencies": {
-		"@types/common-tags": "^1",
-		"@types/eslint": "^7",
-		"@types/eslint-plugin-prettier": "^3",
-		"@types/glob": "^7",
-		"@types/node-fetch": "^2.5.10",
-		"@types/prettier": "^2",
-		"@types/rimraf": "^3",
-		"@typescript-eslint/eslint-plugin": "^4.26.0",
-		"@typescript-eslint/parser": "^4.26.0",
-		"discord-api-types": "^0.18.1",
-		"eslint": "^7.28.0",
-		"eslint-config-marine": "^9.0.6",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-prettier": "^3.4.0",
-		"prettier": "^2.3.0",
-		"rimraf": "^3.0.2",
-		"tsc-alias": "^1.2.11",
-		"tslib": "^2.2.0",
-		"typescript": "^4.3.2"
-	},
-	"eslintConfig": {
-		"extends": "marine/prettier/node",
-		"root": true,
-		"rules": {
-			"@typescript-eslint/no-misused-promises": "off",
-			"@typescript-eslint/no-floating-promises": "off",
-			"@typescript-eslint/no-dynamic-delete": "off",
-			"@typescript-eslint/no-non-null-asserted-optional-chain": "off",
-			"@typescript-eslint/no-var-requires": "off",
-			"@typescript-eslint/no-require-imports": "off",
-			"@typescript-eslint/restrict-template-expressions": "off"
-		}
-	},
-	"prettier": {
-		"printWidth": 120,
-		"useTabs": true,
-		"singleQuote": true,
-		"quoteProps": "as-needed",
-		"trailingComma": "all",
-		"endOfLine": "lf",
-		"tabWidth": 8
-	}
+    "name": "@oasis-sh/discord-bot",
+    "version": "1.0.0",
+    "description": "The official discord bot for oasis.",
+    "main": "dist/index.js",
+    "private": true,
+    "scripts": {
+        "test": "eslint .",
+        "build": "rimraf dist && tsc && tsc-alias",
+        "prettier": "prettier . --write",
+        "start": "yarn build && node .",
+        "lint": "eslint . --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oasis-sh/discord-bot.git"
+    },
+    "keywords": [
+        "discord",
+        "bot",
+        "discord-bot",
+        "discord.js",
+        "slash-commands",
+        "oasis",
+        "oasis-sh"
+    ],
+    "author": "Yoshida Tomio <https://github.com/1chiSensei> (mail@tomio.codes)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/oasis-sh/discord-bot/issues"
+    },
+    "homepage": "https://github.com/oasis-sh/discord-bot#readme",
+    "dependencies": {
+        "@octokit/request": "^5.5.0",
+        "@sapphire/fetch": "^1.0.2",
+        "@sapphire/type": "^2.0.4",
+        "common-tags": "^1.8.0",
+        "consola": "^2.15.3",
+        "discord.js": "dev",
+        "dotenv": "^10.0.0",
+        "glob": "^7.1.7",
+        "prisma": "^2.24.1"
+    },
+    "devDependencies": {
+        "@types/common-tags": "^1",
+        "@types/eslint": "^7",
+        "@types/eslint-plugin-prettier": "^3",
+        "@types/glob": "^7",
+        "@types/node-fetch": "^2.5.10",
+        "@types/prettier": "^2",
+        "@types/rimraf": "^3",
+        "@typescript-eslint/eslint-plugin": "^4.26.0",
+        "@typescript-eslint/parser": "^4.26.0",
+        "discord-api-types": "^0.18.1",
+        "eslint": "^7.28.0",
+        "eslint-config-marine": "^9.0.6",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "prettier": "^2.3.0",
+        "rimraf": "^3.0.2",
+        "tsc-alias": "^1.2.11",
+        "tslib": "^2.2.0",
+        "typescript": "^4.3.2"
+    },
+    "eslintConfig": {
+        "extends": "marine/prettier/node",
+        "root": true,
+        "rules": {
+            "@typescript-eslint/no-misused-promises": "off",
+            "@typescript-eslint/no-floating-promises": "off",
+            "@typescript-eslint/no-dynamic-delete": "off",
+            "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+            "@typescript-eslint/no-var-requires": "off",
+            "@typescript-eslint/no-require-imports": "off",
+            "@typescript-eslint/restrict-template-expressions": "off"
+        }
+    },
+    "prettier": {
+        "printWidth": 120,
+        "useTabs": false,
+        "singleQuote": true,
+        "quoteProps": "as-needed",
+        "trailingComma": "all",
+        "endOfLine": "lf",
+        "tabWidth": 4
+    }
 }
