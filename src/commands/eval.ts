@@ -67,7 +67,7 @@ export = class EvalCommand extends Command {
 				${new Type(result).toString()}
 				\`\`\`
 			`,
-            { maxLength: 1900, char: '\n' },
+            { maxLength: 1900 },
         );
     }
 };
