@@ -1,4 +1,5 @@
 import { Client as BaseClient, Intents, Collection } from 'discord.js';
+import { PrismaClient } from '@prisma/client';
 import consola, { Consola } from 'consola';
 import { Command } from './Command';
 import { dirname, sep } from 'path';
@@ -12,7 +13,16 @@ export class Client extends BaseClient {
     public readonly logger: Consola;
     public readonly events = new Collection<string, Event>();
     public readonly commands = new Collection<string, Command>();
-    public readonly owners = ['566155739652030465', '576580130344927243'];
+    public readonly db = new PrismaClient();
+    public readonly owners = [
+        '566155739652030465', // Tomio#1265
+        '576580130344927243', // Anonymouse#5776
+        '822545100118818827', // bereket#9999
+        '788455517202677761', // F1shNotFound#5117
+        '162203541006450688', // SamJakob#1079
+        '414459528998813736', // Syntax#7041
+        '683579862526722049', // Angshu31#4021
+    ];
 
     public constructor() {
         super({

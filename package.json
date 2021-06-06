@@ -8,8 +8,9 @@
         "test": "eslint .",
         "build": "rimraf dist && tsc && tsc-alias",
         "prettier": "prettier . --write",
-        "start": "yarn build && node .",
-        "lint": "eslint . --fix"
+        "start": "yarn db:generate && yarn build && node .",
+        "lint": "eslint . --fix",
+        "db:generate": "prisma generate"
     },
     "repository": {
         "type": "git",
@@ -32,6 +33,7 @@
     "homepage": "https://github.com/oasis-sh/discord-bot#readme",
     "dependencies": {
         "@octokit/request": "^5.5.0",
+        "@prisma/client": "^2.24.1",
         "@sapphire/fetch": "^1.0.2",
         "@sapphire/type": "^2.0.4",
         "common-tags": "^1.8.0",

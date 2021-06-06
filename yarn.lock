@@ -148,6 +148,7 @@ __metadata:
   resolution: "@oasis-sh/discord-bot@workspace:."
   dependencies:
     "@octokit/request": ^5.5.0
+    "@prisma/client": ^2.24.1
     "@sapphire/fetch": ^1.0.2
     "@sapphire/type": ^2.0.4
     "@types/common-tags": ^1
@@ -227,6 +228,27 @@ __metadata:
   dependencies:
     "@octokit/openapi-types": ^7.2.3
   checksum: b9cf7c0482fbce388a78fb7a7b86b012091087d27e831b428abaa8fbcf9a5c255fa39ab14658b8653e8b639895c00b75849d276fc74c033ee0cdd7046d0ad0e5
+  languageName: node
+  linkType: hard
+
+"@prisma/client@npm:^2.24.1":
+  version: 2.24.1
+  resolution: "@prisma/client@npm:2.24.1"
+  dependencies:
+    "@prisma/engines-version": 2.24.1-2.18095475d5ee64536e2f93995e48ad800737a9e4
+  peerDependencies:
+    prisma: "*"
+  peerDependenciesMeta:
+    prisma:
+      optional: true
+  checksum: 1c3c12ea091a037272b0f80f0de104f1c05922961b7ff0eee94d35039f276f2c25e135ac9a59a0a9ea9abe1f07c2ce7e257e7221cf4eba78683fb41104d165b8
+  languageName: node
+  linkType: hard
+
+"@prisma/engines-version@npm:2.24.1-2.18095475d5ee64536e2f93995e48ad800737a9e4":
+  version: 2.24.1-2.18095475d5ee64536e2f93995e48ad800737a9e4
+  resolution: "@prisma/engines-version@npm:2.24.1-2.18095475d5ee64536e2f93995e48ad800737a9e4"
+  checksum: d4704f556423635a078ae11135e12f737f560d020ddebb0f8215e26d411314a72ea25287b15311de4b5a8ba52fe8b2901a2d082e0ebd3ff5a8a79a3e0b61abf8
   languageName: node
   linkType: hard
 
