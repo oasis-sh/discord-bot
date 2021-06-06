@@ -5,7 +5,7 @@ import type { APIMessage } from 'discord-api-types';
 import type { Awaited } from '@sapphire/utilities';
 import type { Client } from './Client';
 
-export class Command {
+export class SlashCommand {
     public readonly client: Client;
     public readonly name: string;
     public readonly description: string;

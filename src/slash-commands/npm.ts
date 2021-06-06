@@ -1,9 +1,9 @@
+import { SlashCommand } from '@structures/SlashCommand';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { Interaction, MessageEmbed } from 'discord.js';
 import type { Client } from '@structures/Client';
-import { Command } from '@structures/Command';
 
-export = class NPMCommand extends Command {
+export = class NPMCommand extends SlashCommand {
     public constructor(client: Client) {
         super(client, {
             name: 'npm',

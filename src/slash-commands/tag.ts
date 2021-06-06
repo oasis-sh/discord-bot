@@ -1,8 +1,8 @@
+import { SlashCommand } from '@structures/SlashCommand';
 import { Interaction, MessageEmbed } from 'discord.js';
 import type { Client } from '@structures/Client';
-import { Command } from '@structures/Command';
 
-export = class TagCommand extends Command {
+export = class TagCommand extends SlashCommand {
     public constructor(client: Client) {
         super(client, {
             name: 'tag',

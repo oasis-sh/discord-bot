@@ -1,15 +1,10 @@
 import type { GuildMember, PartialGuildMember, Role, TextChannel, GuildAuditLogsEntry } from 'discord.js';
-import type { Client } from '@structures/Client';
+import { Event } from '@sapphire/framework';
 import { stripIndents } from 'common-tags';
-import { Event } from '@structures/Event';
 
-export = class GuildMemberUpdateEvent extends Event {
-    public constructor(client: Client) {
-        super(client, 'guildMemberUpdate');
-    }
-
+export class GuildMemberUpdateEvent extends Event<'guildMemberUpdate'> {
     public async run(oldMember: PartialGuildMember | GuildMember, newMember: GuildMember) {
-        const channel = this.client.channels.cache.get('850915437449314344') as TextChannel;
+        const channel = this.context.client.channels.cache.get('850915437449314344') as TextChannel;
 
         if (oldMember.partial) oldMember = await oldMember.fetch();
 
@@ -75,4 +70,4 @@ export = class GuildMemberUpdateEvent extends Event {
             `);
         }
     }
-};
+}

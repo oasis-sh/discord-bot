@@ -1,31 +1,44 @@
-import { Client as BaseClient, Intents, Collection } from 'discord.js';
+import { LogLevel, SapphireClient } from '@sapphire/framework';
+import { Intents, Collection } from 'discord.js';
 import { PrismaClient } from '@prisma/client';
-import consola, { Consola } from 'consola';
-import { Command } from './Command';
+import { SlashCommand } from './SlashCommand';
 import { dirname, sep } from 'path';
 import { promisify } from 'util';
-import { Event } from './Event';
 import Glob from 'glob';
 
 const glob = promisify(Glob);
 
-export class Client extends BaseClient {
-    public readonly logger: Consola;
-    public readonly events = new Collection<string, Event>();
-    public readonly commands = new Collection<string, Command>();
+declare module '@sapphire/framework' {
+    interface SapphireClient {
+        db: PrismaClient;
+        slashCommands: Collection<string, SlashCommand>;
+        owners: string[];
+        admins: string[];
+    }
+}
+
+export class Client extends SapphireClient {
     public readonly db = new PrismaClient();
-    public readonly owners = [
-        '566155739652030465', // Tomio#1265
-        '576580130344927243', // Anonymouse#5776
-        '822545100118818827', // bereket#9999
-        '788455517202677761', // F1shNotFound#5117
-        '162203541006450688', // SamJakob#1079
-        '414459528998813736', // Syntax#7041
-        '683579862526722049', // Angshu31#4021
+    public readonly slashCommands = new Collection<string, SlashCommand>();
+    public readonly owners = ['566155739652030465'];
+    public readonly admins = [
+        '683579862526722049',
+        '566155739652030465',
+        '414459528998813736',
+        '822545100118818827',
+        '788455517202677761',
+        '576580130344927243',
+        '576580130344927243',
     ];
 
     public constructor() {
         super({
+            defaultPrefix: 'oasis ',
+            regexPrefix: /^(hey +)?oasis[,! ]/i,
+            caseInsensitiveCommands: true,
+            logger: {
+                level: LogLevel.Trace,
+            },
             intents: [Intents.NON_PRIVILEGED, Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS],
             partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER'],
             presence: {
@@ -42,8 +55,6 @@ export class Client extends BaseClient {
                 parse: ['roles', 'users'],
             },
         });
-
-        this.logger = consola.create({ level: 5 });
     }
 
     public get directory() {
@@ -51,38 +62,20 @@ export class Client extends BaseClient {
     }
 
     public async login(token = process.env.DISCORD_TOKEN) {
-        await this.loadCommands();
-        await this.loadEvents();
-
         return super.login(token);
     }
 
-    public async loadEvents() {
-        const events = await glob(`${this.directory}events/**/*.js`);
-
-        for (const eventFile of events) {
-            delete require.cache[eventFile];
-
-            const File = require(eventFile);
-            const event = new File(this) as Event;
-
-            this.logger.info(`Loaded event: ${event.name}`);
-            this.events.set(event.name, event);
-            this[event.type](event.name, async (...args) => event.run(...args));
-        }
-    }
-
-    public async loadCommands() {
+    public async loadSlashCommands() {
         const commands = await glob(`${this.directory}commands/**/*.js`);
 
         for (const commandFile of commands) {
             delete require.cache[commandFile];
 
             const File = require(commandFile);
-            const command = new File(this) as Command;
+            const command = new File(this) as SlashCommand;
 
             this.logger.info(`Loaded command: ${command.name}`);
-            this.commands.set(command.name, command);
+            this.slashCommands.set(command.name, command);
         }
     }
 }

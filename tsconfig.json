@@ -19,10 +19,12 @@
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "importHelpers": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "paths": {
             "@structures/*": ["src/structures/*"],
             "@events/*": ["src/events/*"],
-            "@commands/*": ["src/commands/*"],
+            "@commands/*": ["src/slash-commands/*"],
             "@utils/*": ["src/utils/*"]
         }
     }

@@ -1,12 +1,9 @@
-import type { Client } from '@structures/Client';
-import { Event } from '@structures/Event';
+import { EventOptions, Event } from '@sapphire/framework';
+import { ApplyOptions } from '@sapphire/decorators';
 
-export = class DebugEvent extends Event {
-    public constructor(client: Client) {
-        super(client, 'debug');
-    }
-
+@ApplyOptions<EventOptions>({ once: true })
+export class DebugEvent extends Event<'debug'> {
     public run(info: string) {
-        this.client.logger.debug(info);
+        this.context.client.logger.debug(info);
     }
-};
+}

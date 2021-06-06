@@ -1,17 +1,12 @@
-import type { Client } from '@structures/Client';
 import type { Interaction } from 'discord.js';
-import { Event } from '@structures/Event';
+import { Event } from '@sapphire/framework';
 
-export = class InteractionEvent extends Event {
-    public constructor(client: Client) {
-        super(client, 'interaction');
-    }
-
+export class InteractionEvent extends Event<'interaction'> {
     public async run(interaction: Interaction): Promise<void> {
         if (!interaction.isCommand()) return;
 
-        const command = this.client.commands.get(interaction.commandName);
+        const command = this.context.client.slashCommands.get(interaction.commandName);
 
         await command?.run(interaction);
     }
-};
+}

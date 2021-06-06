@@ -1,15 +1,10 @@
 import type { Message, PartialMessage, TextChannel } from 'discord.js';
-import type { Client } from '@structures/Client';
+import { Event } from '@sapphire/framework';
 import { stripIndents } from 'common-tags';
-import { Event } from '@structures/Event';
 
-export = class MessageUpdateEvent extends Event {
-    public constructor(client: Client) {
-        super(client, 'messageUpdate');
-    }
-
+export class MessageUpdateEvent extends Event<'messageUpdate'> {
     public async run(oldMessage: PartialMessage | Message, newMessage: PartialMessage | Message) {
-        const channel = this.client.channels.cache.get('850915437449314344') as TextChannel;
+        const channel = this.context.client.channels.cache.get('850915437449314344') as TextChannel;
 
         if (oldMessage.partial) oldMessage = await oldMessage.fetch();
         if (newMessage.partial) newMessage = await newMessage.fetch();
@@ -25,4 +20,4 @@ export = class MessageUpdateEvent extends Event {
                 Link: https://discord.com/channels/826577772805095516/${newMessage.channel.id}/${newMessage.id}
             `);
     }
-};
+}

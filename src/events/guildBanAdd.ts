@@ -1,17 +1,12 @@
 import type { GuildBan, TextChannel, GuildAuditLogsEntry } from 'discord.js';
-import type { Client } from '@structures/Client';
+import { Event } from '@sapphire/framework';
 import { stripIndents } from 'common-tags';
-import { Event } from '@structures/Event';
 
-export = class GuildBanAddEvent extends Event {
-    public constructor(client: Client) {
-        super(client, 'guildMemberAdd');
-    }
-
+export class GuildBanAddEvent extends Event<'guildBanAdd'> {
     public async run(ban: GuildBan) {
         if (ban.partial) ban = await ban.fetch();
 
-        const channel = this.client.channels.cache.get('850915437449314344') as TextChannel;
+        const channel = this.context.client.channels.cache.get('850915437449314344') as TextChannel;
         const auditLogs = await ban.guild.fetchAuditLogs({
             limit: 1,
             type: 'MEMBER_BAN_ADD',
@@ -26,4 +21,4 @@ export = class GuildBanAddEvent extends Event {
             Executor: \`${executor?.tag} (${executor?.id})\`
         `);
     }
-};
+}

@@ -1,12 +1,7 @@
-import type { Client } from '@structures/Client';
-import { Event } from '@structures/Event';
+import { Event } from '@sapphire/framework';
 
-export = class ReadyEvent extends Event {
-    public constructor(client: Client) {
-        super(client, 'ready', { type: 'on' });
-    }
-
+export class ReadyEvent extends Event<'ready'> {
     public run() {
-        this.client.logger.info(`Logged in as ${this.client.user?.tag}!`);
+        this.context.client.logger.info(`Logged in as ${this.context.client.user?.tag}!`);
     }
-};
+}

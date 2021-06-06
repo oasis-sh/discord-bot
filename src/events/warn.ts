@@ -1,12 +1,7 @@
-import type { Client } from '@structures/Client';
-import { Event } from '@structures/Event';
+import { Event } from '@sapphire/framework';
 
-export = class WarnEvent extends Event {
-    public constructor(client: Client) {
-        super(client, 'warn');
-    }
-
+export class WarnEvent extends Event<'warn'> {
     public run(info: string) {
-        this.client.logger.warn(info);
+        this.context.client.logger.warn(info);
     }
-};
+}
