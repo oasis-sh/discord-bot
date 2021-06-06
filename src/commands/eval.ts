@@ -46,7 +46,14 @@ export = class EvalCommand extends Command {
     }
 
     private eval(result: any) {
-        const inspected = inspect(result, { depth: 0 }).replace(this.client.token!, '--hidden--');
+        const inspected = inspect(result, { depth: 0 })
+            .replace(this.client.token!, '--hidden--')
+            .replace(process.env.PGHOST!, '--hidden--')
+            .replace(process.env.PGPORT!, '--hidden--')
+            .replace(process.env.PGUSER!, '--hidden--')
+            .replace(process.env.PGDATABASE!, '--hidden--')
+            .replace(process.env.PGPASSWORD!, '--hidden--')
+            .replace(process.env.DATABASE_URL!, '--hidden--');
 
         return Util.splitMessage(
             stripIndents`
