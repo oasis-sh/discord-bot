@@ -2,7 +2,7 @@ import { SlashCommand } from '@structures/SlashCommand';
 import { Interaction, MessageEmbed } from 'discord.js';
 import type { Client } from '@structures/Client';
 
-export = class TagCommand extends SlashCommand {
+export default class TagCommand extends SlashCommand {
     public constructor(client: Client) {
         super(client, {
             name: 'tag',
@@ -201,4 +201,4 @@ export = class TagCommand extends SlashCommand {
             interaction.editReply(content || 'No tags.');
         }
     }
-};
+}

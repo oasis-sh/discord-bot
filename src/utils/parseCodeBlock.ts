@@ -1,6 +1,6 @@
 const codeblock = /```(?:(\S+)\n)?\s*([^]+?)\s*```/i;
 
-export = (value: string) => {
+export default (value: string) => {
     if (/^[0-9]+$/.test(value)) return { code: value, lang: null };
     if (codeblock.test(value)) {
         const parsed = codeblock.exec(value);

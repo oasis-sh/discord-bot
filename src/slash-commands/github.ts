@@ -4,7 +4,7 @@ import type { Client } from '@structures/Client';
 import { request } from '@octokit/request';
 import shorten from '@utils/shorten';
 
-export = class GithubCommand extends SlashCommand {
+export default class GithubCommand extends SlashCommand {
     public constructor(client: Client) {
         super(client, {
             name: 'github',
@@ -265,4 +265,4 @@ export = class GithubCommand extends SlashCommand {
             }
         }
     }
-};
+}

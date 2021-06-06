@@ -3,7 +3,7 @@ import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { Interaction, MessageEmbed } from 'discord.js';
 import type { Client } from '@structures/Client';
 
-export = class NPMCommand extends SlashCommand {
+export default class NPMCommand extends SlashCommand {
     public constructor(client: Client) {
         super(client, {
             name: 'npm',
@@ -57,4 +57,4 @@ export = class NPMCommand extends SlashCommand {
             return interaction.editReply("I couldn't find any info about that package...");
         }
     }
-};
+}

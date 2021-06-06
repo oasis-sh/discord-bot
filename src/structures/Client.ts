@@ -62,16 +62,18 @@ export class Client extends SapphireClient {
     }
 
     public async login(token = process.env.DISCORD_TOKEN) {
+        await this.loadSlashCommands();
+
         return super.login(token);
     }
 
     public async loadSlashCommands() {
-        const commands = await glob(`${this.directory}commands/**/*.js`);
+        const commands = await glob(`${this.directory}slash-commands/**/*.js`);
 
         for (const commandFile of commands) {
             delete require.cache[commandFile];
 
-            const File = require(commandFile);
+            const File = require(commandFile).default;
             const command = new File(this) as SlashCommand;
 
             this.logger.info(`Loaded command: ${command.name}`);
