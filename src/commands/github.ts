@@ -2,6 +2,7 @@ import { Interaction, MessageEmbed } from 'discord.js';
 import { Command } from '@structures/Command';
 import { Client } from '@structures/Client';
 import { request } from '@octokit/request';
+import shorten from '@utils/shorten';
 
 export = class GithubCommand extends Command {
     public constructor(client: Client) {
@@ -89,6 +90,31 @@ export = class GithubCommand extends Command {
                         },
                     ],
                 },
+                {
+                    name: 'pr',
+                    description: 'Shows information about a github pull request.',
+                    type: 'SUB_COMMAND',
+                    options: [
+                        {
+                            name: 'owner',
+                            description: 'The owner of the repository.',
+                            type: 'STRING',
+                            required: true,
+                        },
+                        {
+                            name: 'name',
+                            description: 'The name of the repository.',
+                            type: 'STRING',
+                            required: true,
+                        },
+                        {
+                            name: 'pull_number',
+                            description: 'The pull request number.',
+                            type: 'INTEGER',
+                            required: true,
+                        },
+                    ],
+                },
             ],
         });
     }
@@ -101,6 +127,7 @@ export = class GithubCommand extends Command {
         const repo = interaction.options.get('repo');
         const user = interaction.options.get('user');
         const issue = interaction.options.get('issue');
+        const pr = interaction.options.get('pr');
 
         if (action) {
             const branch = action.options?.get('branch')?.value ?? 'staging';
@@ -188,7 +215,7 @@ export = class GithubCommand extends Command {
 
                 const embed = new MessageEmbed()
                     .setTitle(`#${data.number} ${data.title}`)
-                    .setDescription(data.body ?? '')
+                    .setDescription(shorten(data.body ?? '', 2048))
                     .setURL(data.html_url)
                     .setAuthor(data.user?.login!, data.user?.avatar_url, data.user?.html_url)
                     .setTimestamp(data.updated_at as any)
@@ -200,6 +227,39 @@ export = class GithubCommand extends Command {
                 interaction.editReply({ embeds: [embed] });
             } catch (err) {
                 if (err.message === 'Not Found') return interaction.editReply("I couldn't find that issue...");
+
+                this.client.logger.error(err);
+            }
+        }
+
+        if (pr) {
+            try {
+                const owner = pr.options?.get('owner')?.value as string;
+                const name = pr.options?.get('name')?.value as string;
+                const pull_number = pr.options?.get('pull_number')?.value as number;
+                const { data } = await request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
+                    owner,
+                    pull_number,
+                    repo: name,
+                });
+                const embed = new MessageEmbed()
+                    .setTitle(`#${data.number} ${data.title}`)
+                    .setDescription(shorten(data.body ?? '', 2048))
+                    .setURL(data.html_url)
+                    .setAuthor(data.user?.login!, data.user?.avatar_url, data.user?.html_url)
+                    .setTimestamp(data.updated_at as any)
+                    .setFooter('Last updated at')
+                    .addField('Additions', String(data.additions), true)
+                    .addField('Deletions', String(data.deletions), true)
+                    .addField('Changed Files', String(data.changed_files), true)
+                    .addField('Comments', String(data.comments), true)
+                    .addField('Draft', data.draft ? 'Yes' : 'No', true)
+                    .addField('Mergable', data.mergeable ? 'Yes' : 'No', true)
+                    .setColor('RANDOM');
+
+                interaction.editReply({ embeds: [embed] });
+            } catch (err) {
+                if (err.message === 'Not Found') return interaction.editReply("I couldn't find that pull request...");
 
                 this.client.logger.error(err);
             }
