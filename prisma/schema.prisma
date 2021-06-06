@@ -11,9 +11,9 @@ generator client {
 }
 
 model Tag {
-  name String @id
+  name      String   @id
   createdAt DateTime @default(now())
-  content String 
-  ownerID String
+  content   String
+  ownerID   String
   ownerName String
 }
