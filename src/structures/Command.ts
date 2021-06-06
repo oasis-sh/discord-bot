@@ -2,6 +2,7 @@
 
 import { ApplicationCommandData, ApplicationCommandOptionData, Interaction, Message } from 'discord.js';
 import { APIMessage } from 'discord-api-types';
+import { Awaited } from '@sapphire/utilities';
 import { Client } from './Client';
 
 export class Command {
@@ -20,7 +21,7 @@ export class Command {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public async run(interaction: Interaction): Promise<Message | APIMessage | undefined | void> {
+    public run(interaction: Interaction): Awaited<Message | APIMessage | void> {
         throw new Error(`Command "${this.name}" has no run method!`);
     }
 }

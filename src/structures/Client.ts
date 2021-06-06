@@ -26,7 +26,7 @@ export class Client extends BaseClient {
 
     public constructor() {
         super({
-            intents: [Intents.NON_PRIVILEGED, Intents.FLAGS.GUILDS],
+            intents: [Intents.NON_PRIVILEGED, Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS],
             partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER'],
             presence: {
                 activities: [
@@ -36,6 +36,10 @@ export class Client extends BaseClient {
                     },
                 ],
                 status: 'online',
+            },
+            allowedMentions: {
+                repliedUser: false,
+                parse: ['roles', 'users'],
             },
         });
 
@@ -64,7 +68,7 @@ export class Client extends BaseClient {
 
             this.logger.info(`Loaded event: ${event.name}`);
             this.events.set(event.name, event);
-            this[event.type](event.name, (...args) => event.run(...args));
+            this[event.type](event.name, async (...args) => event.run(...args));
         }
     }
 

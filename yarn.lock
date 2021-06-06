@@ -149,8 +149,10 @@ __metadata:
   dependencies:
     "@octokit/request": ^5.5.0
     "@prisma/client": ^2.24.1
+    "@sapphire/discord.js-utilities": ^1.5.8
     "@sapphire/fetch": ^1.0.2
     "@sapphire/type": ^2.0.4
+    "@sapphire/utilities": ^1.5.2
     "@types/common-tags": ^1
     "@types/eslint": ^7
     "@types/eslint-plugin-prettier": ^3
@@ -266,6 +268,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/discord-utilities@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@sapphire/discord-utilities@npm:2.1.2"
+  dependencies:
+    twemoji-parser: ^13.0.0
+  checksum: 149de8f2ef3f1a6d41674265c6f324adc35ae4e57087aae60cc551918ade1447939d0eab4298ca6232dc010afa945421795d4ce865c3e0837558578b6e7970e7
+  languageName: node
+  linkType: hard
+
+"@sapphire/discord.js-utilities@npm:^1.5.8":
+  version: 1.5.8
+  resolution: "@sapphire/discord.js-utilities@npm:1.5.8"
+  dependencies:
+    "@sapphire/discord-utilities": ^2.1.2
+  peerDependencies:
+    discord.js: ^12.5.3
+  checksum: 47bbd1489c7738c1733e8484d8286d9b99c307e6280815339f7a06a851f83c473aa032026fc865744771af410793486b1fea04e3d33d242b745e9276ff906557
+  languageName: node
+  linkType: hard
+
 "@sapphire/fetch@npm:^1.0.2":
   version: 1.0.2
   resolution: "@sapphire/fetch@npm:1.0.2"
@@ -284,6 +306,13 @@ __metadata:
     nan: ^2.14.2
     tslib: ^2.2.0
   checksum: 073388c77556a960f7d391b7b4f23b01dcf759c0ef960fe5b588e190bc19440f8f33998332a4a6cf7370434e76f6a2ab0dd5bf7c26d3802753608ecb7ee54ae8
+  languageName: node
+  linkType: hard
+
+"@sapphire/utilities@npm:^1.5.2":
+  version: 1.5.2
+  resolution: "@sapphire/utilities@npm:1.5.2"
+  checksum: 2bb66c9a374c77afb87f6026e0a4d278465d3468bbde55a22844240d7cc5f70132cf6d41a408b40c6712adbe31c91ed552ad9569d081d91d4de55d4eafc1df2e
   languageName: node
   linkType: hard
 
@@ -2794,6 +2823,13 @@ fsevents@~2.3.1:
   version: 1.0.3
   resolution: "tweetnacl@npm:1.0.3"
   checksum: 1188f3ef85db04d6dba632d211e481ae0a5805974491633ff60bd56ae3362312dfea1515e0d200685867b69ff212e8778e26923f8203e3c335064b07f620a6c7
+  languageName: node
+  linkType: hard
+
+"twemoji-parser@npm:^13.0.0":
+  version: 13.1.0
+  resolution: "twemoji-parser@npm:13.1.0"
+  checksum: ba287f8c72bc2758db42d29d798087421b93ff14381c86cefeb15ccbb734339f576bc24c37382f546c2e58f68325b3042f9c0af36947ee9f6af26e1dfa243c9a
   languageName: node
   linkType: hard
 

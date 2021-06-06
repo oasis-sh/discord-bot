@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/require-await */
 
+import { Awaited } from '@sapphire/utilities';
 import { ClientEvents } from 'discord.js';
 import { Client } from './Client';
 
@@ -21,7 +22,7 @@ export class Event {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public async run(...args: any[]) {
+    public run(...args: any[]): Awaited<void> {
         throw new Error(`Event "${this.name}" has no run implementation!`);
     }
 }

@@ -34,8 +34,10 @@
     "dependencies": {
         "@octokit/request": "^5.5.0",
         "@prisma/client": "^2.24.1",
+        "@sapphire/discord.js-utilities": "^1.5.8",
         "@sapphire/fetch": "^1.0.2",
         "@sapphire/type": "^2.0.4",
+        "@sapphire/utilities": "^1.5.2",
         "common-tags": "^1.8.0",
         "consola": "^2.15.3",
         "discord.js": "dev",
