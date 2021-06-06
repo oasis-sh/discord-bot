@@ -1,4 +1,4 @@
-import { Client } from '@structures/Client';
+import type { Client } from '@structures/Client';
 import { Event } from '@structures/Event';
 
 export = class DebugEvent extends Event {

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/require-await */
 
-import { Awaited } from '@sapphire/utilities';
-import { ClientEvents } from 'discord.js';
-import { Client } from './Client';
+import type { Awaited } from '@sapphire/utilities';
+import type { ClientEvents } from 'discord.js';
+import type { Client } from './Client';
 
 type EventNames = keyof ClientEvents;
 

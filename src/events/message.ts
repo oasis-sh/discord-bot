@@ -1,7 +1,7 @@
 import { MessagePrompter } from '@sapphire/discord.js-utilities';
-import { Client } from '@structures/Client';
+import type { Client } from '@structures/Client';
 import { Event } from '@structures/Event';
-import { Message } from 'discord.js';
+import type { Message } from 'discord.js';
 
 export = class MessageEvent extends Event {
     public constructor(client: Client) {

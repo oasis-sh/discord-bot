@@ -1,5 +1,5 @@
-import { GuildBan, TextChannel, GuildAuditLogsEntry } from 'discord.js';
-import { Client } from '@structures/Client';
+import type { GuildBan, TextChannel, GuildAuditLogsEntry } from 'discord.js';
+import type { Client } from '@structures/Client';
 import { stripIndents } from 'common-tags';
 import { Event } from '@structures/Event';
 

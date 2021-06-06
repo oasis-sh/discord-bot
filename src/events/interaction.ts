@@ -1,6 +1,6 @@
-import { Client } from '@structures/Client';
+import type { Client } from '@structures/Client';
+import type { Interaction } from 'discord.js';
 import { Event } from '@structures/Event';
-import { Interaction } from 'discord.js';
 
 export = class InteractionEvent extends Event {
     public constructor(client: Client) {

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/require-await */
 
-import { ApplicationCommandData, ApplicationCommandOptionData, Interaction, Message } from 'discord.js';
-import { APIMessage } from 'discord-api-types';
-import { Awaited } from '@sapphire/utilities';
-import { Client } from './Client';
+import type { ApplicationCommandData, ApplicationCommandOptionData, Interaction, Message } from 'discord.js';
+import type { APIMessage } from 'discord-api-types';
+import type { Awaited } from '@sapphire/utilities';
+import type { Client } from './Client';
 
 export class Command {
     public readonly client: Client;

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import parseCodeBlock from '@utils/parseCodeBlock';
+import type { Client } from '@structures/Client';
 import { Interaction, Util } from 'discord.js';
 import { Command } from '@structures/Command';
-import { Client } from '@structures/Client';
 import { stripIndents } from 'common-tags';
 import { Type } from '@sapphire/type';
 import { inspect } from 'util';

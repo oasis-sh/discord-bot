@@ -1,5 +1,5 @@
+import type { Client } from '@structures/Client';
 import { Command } from '@structures/Command';
-import { Client } from '@structures/Client';
 import { Interaction } from 'discord.js';
 
 export = class HelloCommand extends Command {

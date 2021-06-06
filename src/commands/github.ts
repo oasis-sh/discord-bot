@@ -1,6 +1,6 @@
 import { Interaction, MessageEmbed } from 'discord.js';
+import type { Client } from '@structures/Client';
 import { Command } from '@structures/Command';
-import { Client } from '@structures/Client';
 import { request } from '@octokit/request';
 import shorten from '@utils/shorten';
 

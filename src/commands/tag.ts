@@ -1,6 +1,6 @@
 import { Interaction, MessageEmbed } from 'discord.js';
+import type { Client } from '@structures/Client';
 import { Command } from '@structures/Command';
-import { Client } from '@structures/Client';
 
 export = class TagCommand extends Command {
     public constructor(client: Client) {

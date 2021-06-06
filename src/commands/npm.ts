@@ -1,7 +1,7 @@
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { Interaction, MessageEmbed } from 'discord.js';
+import type { Client } from '@structures/Client';
 import { Command } from '@structures/Command';
-import { Client } from '@structures/Client';
 
 export = class NPMCommand extends Command {
     public constructor(client: Client) {
