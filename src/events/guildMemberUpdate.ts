@@ -13,21 +13,13 @@ export class GuildMemberUpdateEvent extends Event<'guildMemberUpdate'> {
         newMember.roles.cache.forEach((role) => {
             if (!oldMember.roles.cache.has(role.id)) addedRoles.push(role);
         });
-        addedRoles.forEach(async (role) => {
-            const auditLogs = await oldMember.guild.fetchAuditLogs({
-                limit: 1,
-                type: 'MEMBER_ROLE_UPDATE',
-                user: oldMember.user!,
-            });
-            const { executor } = auditLogs.entries.first() as GuildAuditLogsEntry;
-
+        addedRoles.forEach((role) => {
             channel.send(stripIndents`
                 **__${oldMember.user?.tag}__ got a role added!**
 
                 Name: \`${role.name}\`
                 ID: \`${role.id}\`
                 Position: \`${role.position}\`
-                Executor: \`${executor?.tag} (${executor?.id})\`
             `);
         });
 
@@ -36,20 +28,12 @@ export class GuildMemberUpdateEvent extends Event<'guildMemberUpdate'> {
         oldMember.roles.cache.forEach((role) => {
             if (!newMember.roles.cache.has(role.id)) removedRoles.push(role);
         });
-        removedRoles.forEach(async (role) => {
-            const auditLogs = await oldMember.guild.fetchAuditLogs({
-                limit: 1,
-                type: 'MEMBER_ROLE_UPDATE',
-                user: oldMember.user!,
-            });
-            const { executor } = auditLogs.entries.first() as GuildAuditLogsEntry;
-
+        removedRoles.forEach((role) => {
             channel.send(stripIndents`
                 **__${oldMember.user?.tag}__ got a role removed...**
 
                 Name: \`${role.name}\`
                 ID: \`${role.id}\`
-                Executor: \`${executor?.tag} (${executor?.id})\`
             `);
         });
 

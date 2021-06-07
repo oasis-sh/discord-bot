@@ -19,7 +19,11 @@ model Tag {
 }
 
 model ReactionRole {
-  messageID String @id
-  emojiID   String
-  roleID    String
+  id        String @default(cuid())
+  messageID String @map("message_id")
+  emojiID   String @map("emoji_id")
+  roleID    String @map("role_id")
+
+  @@id([id, messageID])
+  @@map("reaction_role")
 }

@@ -77,7 +77,7 @@ export class ReactionRolesCommand extends SubCommandPluginCommand {
         if (!exists) return message.reply(`A reaction role for the emoji **${identifier}** doesnt exist.`);
 
         await msg.reactions.cache.get(emoji)?.remove();
-        await this.context.client.db.reactionRole.delete({ where: { messageID } });
+        await this.context.client.db.reactionRole.delete({ where: { id_messageID: { id: exists.id, messageID } } });
 
         message.reply('Removing the reaction role was a success!');
     }
