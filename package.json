@@ -32,6 +32,7 @@
     },
     "homepage": "https://github.com/oasis-sh/discord-bot#readme",
     "dependencies": {
+        "@naval-base/ms": "^3.1.0",
         "@octokit/request": "^5.5.0",
         "@prisma/client": "^2.24.1",
         "@sapphire/decorators": "^2.1.2",
@@ -40,6 +41,7 @@
         "@sapphire/fetch": "^1.0.2",
         "@sapphire/framework": "^1.0.2",
         "@sapphire/plugin-logger": "^1.0.12",
+        "@sapphire/plugin-subcommands": "^1.0.5",
         "@sapphire/type": "^2.0.4",
         "@sapphire/utilities": "^1.5.2",
         "@skyra/editable-commands": "^1.0.0",

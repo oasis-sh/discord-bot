@@ -106,6 +106,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@naval-base/ms@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@naval-base/ms@npm:3.1.0"
+  checksum: 247cc6758ab5a1b86ee8091251520378df64db0a27b3435f41af77d4ca21aa8a9d2299ba916518ddd880ac4f8487340a3ad25b2c1479111d2d52ab8b59f5c1dc
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -147,6 +154,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/discord-bot@workspace:."
   dependencies:
+    "@naval-base/ms": ^3.1.0
     "@octokit/request": ^5.5.0
     "@prisma/client": ^2.24.1
     "@sapphire/decorators": ^2.1.2
@@ -155,6 +163,7 @@ __metadata:
     "@sapphire/fetch": ^1.0.2
     "@sapphire/framework": ^1.0.2
     "@sapphire/plugin-logger": ^1.0.12
+    "@sapphire/plugin-subcommands": ^1.0.5
     "@sapphire/type": ^2.0.4
     "@sapphire/utilities": ^1.5.2
     "@skyra/editable-commands": ^1.0.0
@@ -446,6 +455,19 @@ __metadata:
   peerDependencies:
     "@sapphire/framework": ^1.x
   checksum: 112d8c626c4a229e3f7a750632c727b4a6cba77c96d61e66423217c926d29974cd55f96f19d2392cc8e486bc398cc87ffe950cef31de1c0182a68f143d4d14ff
+  languageName: node
+  linkType: hard
+
+"@sapphire/plugin-subcommands@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@sapphire/plugin-subcommands@npm:1.0.5"
+  dependencies:
+    tslib: ^2.2.0
+  peerDependencies:
+    "@sapphire/framework": ^1.x
+    "@sapphire/utilities": ^1.x
+    discord.js: ^12.x
+  checksum: 5d7e117ff84d6ca1d2a3a3d253e4b711d3a497d054800140119f97291e8e77bd05cdabdda84ab064eca4cd18a87c5bdb3dbedfeb6131299de47bbf237c69ad60
   languageName: node
   linkType: hard
 

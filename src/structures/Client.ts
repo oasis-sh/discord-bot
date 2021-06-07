@@ -1,4 +1,4 @@
-import { LogLevel, SapphireClient } from '@sapphire/framework';
+import { LogLevel, SapphireClient, SapphireClientOptions } from '@sapphire/framework';
 import { Intents, Collection } from 'discord.js';
 import { PrismaClient } from '@prisma/client';
 import { SlashCommand } from './SlashCommand';
@@ -14,6 +14,10 @@ declare module '@sapphire/framework' {
         slashCommands: Collection<string, SlashCommand>;
         owners: string[];
         admins: string[];
+    }
+
+    interface ArgType {
+        emoji: `${bigint}`;
     }
 }
 
@@ -31,8 +35,9 @@ export class Client extends SapphireClient {
         '576580130344927243',
     ];
 
-    public constructor() {
+    public constructor(options?: SapphireClientOptions) {
         super({
+            ...options,
             defaultPrefix: 'oasis ',
             regexPrefix: /^(hey +)?oasis[,! ]/i,
             caseInsensitiveCommands: true,

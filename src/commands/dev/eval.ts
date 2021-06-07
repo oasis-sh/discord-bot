@@ -23,6 +23,7 @@ export class EvalCommand extends Command {
 
         const { result, success, type } = await this.eval(code, {
             message,
+            args,
             async: args.getFlags('async'),
             depth: Number(args.getOption('depth') ?? 0),
             showHidden: args.getFlags('hidden', 'showHidden'),
@@ -43,12 +44,15 @@ export class EvalCommand extends Command {
         return message.channel.send(`${output}\n${typeFooter}`);
     }
 
-    private async eval(code: string, flags: { async: boolean; depth: number; showHidden: boolean; message: Message }) {
+    private async eval(
+        code: string,
+        flags: { async: boolean; depth: number; showHidden: boolean; message: Message; args: Args },
+    ) {
         if (flags.async) code = `(async () => {\n${code}\n})();`;
 
         let success = true;
         let result = null;
-        const { message } = flags;
+        const { message, args } = flags;
         const { client } = this.context;
 
         try {

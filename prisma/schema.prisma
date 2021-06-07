@@ -17,3 +17,9 @@ model Tag {
   ownerID   String
   ownerName String
 }
+
+model ReactionRole {
+  messageID String @id
+  emojiID   String
+  roleID    String
+}
