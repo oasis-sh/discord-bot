@@ -213,6 +213,7 @@ __metadata:
     tslib: ^2.2.0
     twemoji-parser: ^13.1.0
     typescript: ^4.3.2
+    weird-to-normal-chars: ^1.5.0
   languageName: unknown
   linkType: soft
 
@@ -4091,6 +4092,13 @@ typescript@^4.3.2:
     ini: ^1.3.5
     js-git: ^0.7.8
   checksum: ffc78f5d148cc4a46a6b518477707bd8441207413fda72f77248e558015afc944acbb637e1a6f2ba1e4d0d3ada945a64b11b96d05ddba2387afebf22eb03114e
+  languageName: node
+  linkType: hard
+
+"weird-to-normal-chars@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "weird-to-normal-chars@npm:1.5.0"
+  checksum: a9658a78284a8e979ef3977f0c82b9eb326b0e4c2df0431ee66e9c5c94d2a67ba2cdff0d03c9ffad2397a23bebe8f395c1ee83a30fce13d9b9b13a40eec7fad4
   languageName: node
   linkType: hard
 

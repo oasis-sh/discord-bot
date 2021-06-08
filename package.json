@@ -54,7 +54,8 @@
         "prisma": "^2.24.1",
         "reflect-metadata": "^0.1.13",
         "tslib": "^2.2.0",
-        "twemoji-parser": "^13.1.0"
+        "twemoji-parser": "^13.1.0",
+        "weird-to-normal-chars": "^1.5.0"
     },
     "devDependencies": {
         "@types/common-tags": "^1",

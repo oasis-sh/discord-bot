@@ -1,31 +1,15 @@
-import { SlashCommand } from '@structures/SlashCommand';
+import { Command, CommandOptions, Args } from '@sapphire/framework';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
-import { Interaction, MessageEmbed } from 'discord.js';
-import type { Client } from '@structures/Client';
+import { ApplyOptions } from '@sapphire/decorators';
+import { Message, MessageEmbed } from 'discord.js';
 
-export default class NPMCommand extends SlashCommand {
-    public constructor(client: Client) {
-        super(client, {
-            name: 'npm',
-            description: 'Shows information about an npm package.',
-            options: [
-                {
-                    name: 'package',
-                    description: 'The package name.',
-                    type: 'STRING',
-                    required: true,
-                },
-            ],
-        });
-    }
-
-    public async run(interaction: Interaction) {
-        if (!interaction.isCommand()) return;
-
+@ApplyOptions<CommandOptions>({
+    description: 'Shows info about a NPM Package.',
+})
+export class NPMCommand extends Command {
+    public async run(message: Message, args: Args) {
         try {
-            interaction.defer();
-
-            const name = interaction.options.get('package')?.value;
+            const name = (await args.pickResult('string')).value;
             const data = await fetch<any>(`https://registry.npmjs.com/${name as string}`, FetchResultTypes.JSON);
 
             const version = data.versions[data['dist-tags'].latest];
@@ -50,11 +34,9 @@ export default class NPMCommand extends SlashCommand {
 
             if (data.description) embed.setDescription(data.description);
 
-            return interaction.editReply({ embeds: [embed] });
+            return message.reply(embed);
         } catch (err) {
-            this.client.logger.error(err);
-
-            return interaction.editReply("I couldn't find any info about that package...");
+            return message.reply("I couldn't find any info about that package...");
         }
     }
 }
