@@ -1,3 +1,5 @@
+import '@skyra/editable-commands';
+
 import { LogLevel, SapphireClient, SapphireClientOptions } from '@sapphire/framework';
 import { Intents, Collection } from 'discord.js';
 import { PrismaClient } from '@prisma/client';

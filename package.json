@@ -45,6 +45,7 @@
         "@sapphire/type": "^2.0.4",
         "@sapphire/utilities": "^1.5.2",
         "@skyra/editable-commands": "^1.0.0",
+        "canvas": "^2.8.0",
         "common-tags": "^1.8.0",
         "discord-api-types": "^0.18.1",
         "discord.js": "dev",
@@ -52,7 +53,8 @@
         "pm2": "^4.5.6",
         "prisma": "^2.24.1",
         "reflect-metadata": "^0.1.13",
-        "tslib": "^2.2.0"
+        "tslib": "^2.2.0",
+        "twemoji-parser": "^13.1.0"
     },
     "devDependencies": {
         "@types/common-tags": "^1",
@@ -61,6 +63,7 @@
         "@types/node-fetch": "^2.5.10",
         "@types/prettier": "^2",
         "@types/rimraf": "^3",
+        "@types/twemoji-parser": "^12.1.0",
         "@typescript-eslint/eslint-plugin": "^4.26.0",
         "@typescript-eslint/parser": "^4.26.0",
         "eslint": "^7.28.0",
@@ -82,7 +85,9 @@
             "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
             "@typescript-eslint/no-var-requires": "off",
             "@typescript-eslint/no-require-imports": "off",
-            "@typescript-eslint/restrict-template-expressions": "off"
+            "@typescript-eslint/restrict-template-expressions": "off",
+            "@typescript-eslint/prefer-for-of": "off",
+            "@typescript-eslint/switch-exhaustiveness-check": "off"
         }
     },
     "prettier": {
