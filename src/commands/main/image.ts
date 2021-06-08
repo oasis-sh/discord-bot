@@ -9,13 +9,8 @@ import type { Message } from 'discord.js';
 import shorten from '@utils/shorten';
 import { join } from 'path';
 
-registerFont(join(__dirname, '..', '..', '..', 'fonts', 'manropeRegular.ttf'), {
-    family: 'Whitney',
-    weight: 'regular',
-    style: 'normal',
-});
 registerFont(join(__dirname, '..', '..', '..', 'fonts', 'whitneyMedium.otf'), {
-    family: 'Manrope',
+    family: 'Whitney',
     weight: 'regular',
     style: 'normal',
 });
@@ -31,6 +26,9 @@ export class ImageCommand extends SubCommandPluginCommand {
         const msg = await args.rest('string');
 
         if (!member) return message.reply('You gave an invalid member.');
+        if (!member.manageable) return message.reply('I cannot manage that member...');
+
+        message.channel.startTyping();
 
         const base = await loadImage(member.user.displayAvatarURL({ format: 'png' }));
         const imageCanvas = createCanvas(base.width, base.height);
@@ -47,7 +45,7 @@ export class ImageCommand extends SubCommandPluginCommand {
         ctx.fillStyle = '#36393E';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(image, 75, 30, 130, 130);
-        ctx.font = '40px Manrope';
+        ctx.font = '40px Whitney';
         ctx.fillStyle = '#FFFFFF';
 
         await renderEmoji(ctx, shorten(msg, 66), 230, 150);
@@ -61,6 +59,7 @@ export class ImageCommand extends SubCommandPluginCommand {
         ctx.textAlign = 'start';
         ctx.fillText(discordTime(), 240 + ctx.measureText(shorten(member.displayName, 17)).width + 110, 80);
 
+        message.channel.stopTyping();
         message.reply({ files: [{ attachment: canvas.toBuffer(), name: 'quote.png' }] });
     }
 }
