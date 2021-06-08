@@ -26,7 +26,6 @@ export class ImageCommand extends SubCommandPluginCommand {
         const msg = await args.rest('string');
 
         if (!member) return message.reply('You gave an invalid member.');
-        if (!member.manageable) return message.reply('I cannot manage that member...');
 
         message.channel.startTyping();
 

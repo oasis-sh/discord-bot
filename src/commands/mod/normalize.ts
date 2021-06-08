@@ -13,6 +13,7 @@ export class NormalizeCommand extends Command {
         const member = (await args.pickResult('member')).value;
 
         if (!member) return message.reply('You provided an invalid member.');
+        if (!member.manageable) return message.reply('I cannot manage that member...');
 
         const oldNick = member.displayName;
         const newNick = weirdToNormalChars(oldNick);
