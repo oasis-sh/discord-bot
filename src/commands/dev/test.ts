@@ -4,7 +4,7 @@ import type { Message } from 'discord.js';
 
 @ApplyOptions<CommandOptions>({
     description: 'Test',
-    preconditions: ['OwnerOnly'],
+    preconditions: ['OwnerOnly', 'GuildOnly'],
 })
 export class TestCommand extends Command {
     public async run(message: Message, args: Args) {

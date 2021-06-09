@@ -11,7 +11,7 @@ import { inspect } from 'util';
     aliases: ['ev', 'debug'],
     description: 'Evaluates javascript code.',
     quotes: [],
-    preconditions: ['OwnerOnly'],
+    preconditions: ['OwnerOnly', 'GuildOnly'],
     strategyOptions: {
         flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
         options: ['depth'],

@@ -6,7 +6,7 @@ import type { Message } from 'discord.js';
 @ApplyOptions<SubCommandPluginCommandOptions>({
     description: "Set's up reaction roles.",
     aliases: ['rr'],
-    preconditions: ['AdminOnly'],
+    preconditions: ['AdminOnly', 'GuildOnly'],
     subCommands: ['add', 'remove'],
 })
 export class ReactionRolesCommand extends SubCommandPluginCommand {

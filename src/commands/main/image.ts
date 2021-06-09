@@ -7,6 +7,7 @@ import discordTime from '@utils/discordTime';
 import circle from '@utils/canvas/circle';
 import type { Message } from 'discord.js';
 import shorten from '@utils/shorten';
+import GIFEncoder from 'gifencoder';
 import { join } from 'path';
 
 registerFont(join(__dirname, '..', '..', '..', 'fonts', 'whitneyMedium.otf'), {
@@ -18,7 +19,7 @@ registerFont(join(__dirname, '..', '..', '..', 'fonts', 'whitneyMedium.otf'), {
 @ApplyOptions<SubCommandPluginCommandOptions>({
     description: 'Image Manipulation commands.',
     aliases: ['img'],
-    subCommands: ['quote'],
+    subCommands: ['quote', 'triggered'],
 })
 export class ImageCommand extends SubCommandPluginCommand {
     public async quote(message: Message, args: Args) {
@@ -60,5 +61,56 @@ export class ImageCommand extends SubCommandPluginCommand {
 
         message.channel.stopTyping();
         message.reply({ files: [{ attachment: canvas.toBuffer(), name: 'quote.png' }] });
+    }
+
+    public async triggered(message: Message, args: Args) {
+        const member = (await args.pickResult('member')).value;
+
+        if (!member) return message.reply('You provided an invalid member.');
+
+        message.channel.startTyping();
+
+        const base = await loadImage(join(__dirname, '..', '..', '..', 'images', 'triggered.png'));
+        const image = await loadImage(member.user.displayAvatarURL({ format: 'png' }));
+        const gif = new GIFEncoder(256, 310);
+
+        gif.start();
+        gif.setRepeat(0);
+        gif.setDelay(15);
+
+        const canvas = createCanvas(256, 310);
+        const ctx = canvas.getContext('2d');
+        const BR = 30;
+        const LR = 20;
+        let i = 0;
+
+        while (i < 9) {
+            ctx.clearRect(0, 0, 256, 310);
+            ctx.drawImage(
+                image,
+                Math.floor(Math.random() * BR) - BR,
+                Math.floor(Math.random() * BR) - BR,
+                256 + BR,
+                310 - 54 + BR,
+            );
+            ctx.save();
+            ctx.fillStyle = '#FF000033';
+            ctx.fillRect(0, 0, 256, 310);
+            ctx.restore();
+            ctx.drawImage(
+                base,
+                Math.floor(Math.random() * LR) - LR,
+                310 - 54 + Math.floor(Math.random() * LR) - LR,
+                256 + LR,
+                54 + LR,
+            );
+            gif.addFrame(ctx);
+
+            i++;
+        }
+
+        gif.finish();
+        message.channel.stopTyping();
+        message.reply({ files: [{ attachment: gif.out.getData(), name: 'triggered.gif' }] });
     }
 }

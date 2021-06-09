@@ -7,6 +7,7 @@ import type { Args } from '@sapphire/framework';
     aliases: ['t'],
     description: 'A subcommand of tag commands.',
     subCommands: ['show', 'create', 'del', 'edit', 'info', 'list'],
+    preconditions: ['GuildOnly'],
 })
 export class TagCommand extends SubCommandPluginCommand {
     public async show(message: Message, args: Args) {
