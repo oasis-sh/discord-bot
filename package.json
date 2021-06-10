@@ -14,7 +14,8 @@
         "start": "pm2-runtime start dist/index.js",
         "pre-lint": "yarn constraints",
         "lint": "eslint . --fix",
-        "db:generate": "prisma generate"
+        "db:generate": "prisma generate",
+        "postinstall": "husky install"
     },
     "repository": {
         "type": "git",
@@ -72,6 +73,8 @@
         "weird-to-normal-chars": "^1.5.0"
     },
     "devDependencies": {
+        "@commitlint/cli": "^12.1.4",
+        "@commitlint/config-conventional": "^12.1.4",
         "@types/common-tags": "^1",
         "@types/eslint": "^7",
         "@types/eslint-plugin-prettier": "^3",
@@ -87,6 +90,7 @@
         "eslint-config-marine": "^9.0.6",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-prettier": "^3.4.0",
+        "husky": "^6.0.0",
         "prettier": "^2.3.0",
         "rimraf": "^3.0.2",
         "tsc-alias": "^1.2.11",
@@ -116,5 +120,10 @@
         "trailingComma": "all",
         "endOfLine": "lf",
         "tabWidth": 4
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
     }
 }
