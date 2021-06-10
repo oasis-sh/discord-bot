@@ -12,6 +12,7 @@
         "prettier": "prettier . --write",
         "pre-start": "yarn db:generate && yarn build",
         "start": "pm2-runtime start dist/index.js",
+        "pre-lint": "yarn constraints",
         "lint": "eslint . --fix",
         "db:generate": "prisma generate"
     },
@@ -28,12 +29,19 @@
         "oasis",
         "oasis-sh"
     ],
-    "author": "Yoshida Tomio <https://github.com/1chiSensei> (mail@tomio.codes)",
+    "author": {
+        "email": "mail@tomio.codes",
+        "name": "1chiSensei",
+        "url": "https://github.com/1chiSensei"
+    },
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/oasis-sh/discord-bot/issues"
     },
     "homepage": "https://github.com/oasis-sh/discord-bot#readme",
+    "engines": {
+        "node": ">=14.0.0"
+    },
     "dependencies": {
         "@naval-base/ms": "^3.1.0",
         "@octokit/request": "^5.5.0",
@@ -58,6 +66,7 @@
         "prisma": "^2.24.1",
         "reflect-metadata": "^0.1.13",
         "shelljs": "^0.8.4",
+        "tio.js": "^1.0.9",
         "tslib": "^2.2.0",
         "twemoji-parser": "^13.1.0",
         "weird-to-normal-chars": "^1.5.0"

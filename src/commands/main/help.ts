@@ -10,6 +10,7 @@ import Command from '@structures/Command';
     description: 'Shows info about the commands.',
     detailedDescription: 'You can also provide a command, which will return info about that command.',
     category: 'Main',
+    usage: '[command]',
 })
 export class HelpCommand extends Command {
     private _commands!: CommandStore;
@@ -28,14 +29,11 @@ export class HelpCommand extends Command {
         if (!command)
             return message.reply("I can't seem to find that command... Maybe try giving a valid command next time?");
 
-        const embed = new MessageEmbed().setColor('RANDOM');
+        const embed = new MessageEmbed().setColor('RANDOM').setDescription(command.description);
 
         if (command.aliases.length) embed.addField('Aliases', command.aliases.map((alias) => `\`${alias}\``).join(' '));
-
-        embed
-            .addField('Detailed Description', command.detailedDescription || 'None')
-            .setDescription(command.description);
-
+        if (command.detailedDescription) embed.addField('Detailed Description', command.detailedDescription);
+        if (command.usage) embed.addField('Usage', `\`${command.usage}\``);
         if (command instanceof SubCommand)
             embed.addField(
                 'Sub Commands',

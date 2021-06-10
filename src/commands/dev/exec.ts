@@ -14,6 +14,7 @@ const command = promisify(shell.exec);
     description: 'Executes a shell command.',
     preconditions: ['OwnerOnly', 'GuildOnly'],
     category: 'Developer',
+    usage: '<command>',
 })
 export class ExecCommand extends Command {
     public async run(message: Message, args: Args) {
@@ -26,7 +27,10 @@ export class ExecCommand extends Command {
         `;
 
         if (content.length > 2000)
-            return message.reply({ files: [{ attachment: Buffer.from(content), name: 'output.txt' }] });
+            return message.reply({
+                files: [{ attachment: Buffer.from(content), name: 'output.txt' }],
+                content: 'Output was too long... sent the result as a file.',
+            });
 
         message.reply(content);
     }

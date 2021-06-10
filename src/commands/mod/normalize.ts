@@ -9,6 +9,7 @@ import Command from '@structures/Command';
     description: "Normalizes a member's username.",
     preconditions: ['ModOnly', 'GuildOnly'],
     category: 'Moderation',
+    usage: '<member>',
 })
 export class NormalizeCommand extends Command {
     public async run(message: Message, args: Args) {

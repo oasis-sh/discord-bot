@@ -18,10 +18,12 @@ declare module '@sapphire/framework' {
 
     interface CommandOptions {
         category: string;
+        usage?: string;
     }
 
     interface Command {
         category: string;
+        usage?: string;
     }
 }
 

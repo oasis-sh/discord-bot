@@ -13,6 +13,7 @@ import { inspect } from 'util';
     description: 'Evaluates javascript code.',
     quotes: [],
     category: 'Developer',
+    usage: '<script>',
     preconditions: ['OwnerOnly', 'GuildOnly'],
     strategyOptions: {
         flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
@@ -38,12 +39,13 @@ export class EvalCommand extends Command {
         const typeFooter = `**Type**: ${codeBlock('typescript', type)}`;
 
         if (output.length > 2000) {
-            return message.channel.send(`Output was too long... sent the result as a file.\n\n${typeFooter}`, {
+            return message.reply({
                 files: [{ attachment: Buffer.from(output), name: 'output.txt' }],
+                content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
             });
         }
 
-        return message.channel.send(`${output}\n${typeFooter}`);
+        return message.reply(`${output}\n${typeFooter}`);
     }
 
     private async eval(
