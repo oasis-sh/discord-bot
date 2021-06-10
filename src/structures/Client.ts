@@ -38,6 +38,7 @@ export class Client extends SapphireClient {
         '788455517202677761', // F1shNotFound#5117
         '576580130344927243', // Anonymouse#5776
         '683579862526722049', // Angshu31#4021
+        '566155739652030465', // Tomio#1265
     ];
 
     public readonly mods = [
@@ -46,6 +47,7 @@ export class Client extends SapphireClient {
         '424213584659218445', // im a book#5877
         '358778308747460610', // Matt_Lawz#2170
         '538009668035805195', // PatAPizza#1536
+        '566155739652030465', // Tomio#1265
     ];
 
     public constructor(options?: SapphireClientOptions) {

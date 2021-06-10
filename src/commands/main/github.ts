@@ -35,7 +35,7 @@ export class GithubCommand extends SubCommand {
             .addField('Status', data.status)
             .setColor('RANDOM');
 
-        message.reply(embed);
+        message.reply({ embed });
     }
 
     public async repo(message: Message, args: Args) {
@@ -59,7 +59,7 @@ export class GithubCommand extends SubCommand {
                 .setFooter('Last updated at')
                 .setColor('RANDOM');
 
-            message.reply(embed);
+            message.reply({ embed });
         } catch (err) {
             if (err.message === 'Not Found') return message.reply("I couldn't find that repository...");
         }
@@ -81,7 +81,7 @@ export class GithubCommand extends SubCommand {
                 .setFooter('Last updated at')
                 .setColor('RANDOM');
 
-            message.reply(embed);
+            message.reply({ embed });
         } catch (err) {
             if (err.message === 'Not Found') return message.reply("I couldn't find that user...");
         }
@@ -111,7 +111,7 @@ export class GithubCommand extends SubCommand {
                 .addField('Author Association', data.author_association, true)
                 .setColor('RANDOM');
 
-            message.reply(embed);
+            message.reply({ embed });
         } catch (err) {
             if (err.message === 'Not Found') return message.reply("I couldn't find that issue...");
         }
@@ -142,7 +142,7 @@ export class GithubCommand extends SubCommand {
                 .addField('Mergable', data.mergeable ? 'Yes' : 'No', true)
                 .setColor('RANDOM');
 
-            message.reply(embed);
+            message.reply({ embed });
         } catch (err) {
             if (err.message === 'Not Found') return message.reply("I couldn't find that pull request...");
         }
