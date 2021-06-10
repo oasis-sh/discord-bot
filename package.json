@@ -15,7 +15,7 @@
         "pre-lint": "yarn constraints",
         "lint": "eslint . --fix",
         "db:generate": "prisma generate",
-        "postinstall": "husky install"
+        "postinstall": "is-ci || husky install"
     },
     "repository": {
         "type": "git",
@@ -79,6 +79,7 @@
         "@types/eslint": "^7",
         "@types/eslint-plugin-prettier": "^3",
         "@types/gifencoder": "^2.0.1",
+        "@types/is-ci": "^3",
         "@types/node-fetch": "^2.5.10",
         "@types/prettier": "^2",
         "@types/rimraf": "^3",
@@ -91,6 +92,7 @@
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-prettier": "^3.4.0",
         "husky": "^6.0.0",
+        "is-ci": "^3.0.0",
         "prettier": "^2.3.0",
         "rimraf": "^3.0.2",
         "tsc-alias": "^1.2.11",

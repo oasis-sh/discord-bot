@@ -390,6 +390,7 @@ __metadata:
     "@types/eslint": ^7
     "@types/eslint-plugin-prettier": ^3
     "@types/gifencoder": ^2.0.1
+    "@types/is-ci": ^3
     "@types/node-fetch": ^2.5.10
     "@types/prettier": ^2
     "@types/rimraf": ^3
@@ -408,6 +409,7 @@ __metadata:
     eslint-plugin-prettier: ^3.4.0
     gifencoder: ^2.0.1
     husky: ^6.0.0
+    is-ci: ^3.0.0
     pm2: ^4.5.6
     prettier: ^2.3.0
     prisma: ^2.24.1
@@ -799,6 +801,15 @@ __metadata:
     "@types/minimatch": "*"
     "@types/node": "*"
   checksum: 633bf1dda9a30899b233ed6b97c75cdd59f2ee856a12240c85474ce6889e26b3b3520b62de56f6bb61824af0ef51b311a0cae305f27ba0de8ddc4898a3673d42
+  languageName: node
+  linkType: hard
+
+"@types/is-ci@npm:^3":
+  version: 3.0.0
+  resolution: "@types/is-ci@npm:3.0.0"
+  dependencies:
+    ci-info: ^3.1.0
+  checksum: 661e9cc9ba61e1c283f3814fbb1355aca70b281b5d71def665348f8e17db1fbdf5e62db496b0c2ab7b913e49ad626faa28478c06b9fecf70f860f4386469973f
   languageName: node
   linkType: hard
 
@@ -1474,6 +1485,13 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: b06ba0bf4218bc2214cdb94a7d0200db5c6425f9425795c064dcf5a3801aac8ae87f764727890cd1f48c026559159e7e0e15ed3d1940ce453dec54898d013379
+  languageName: node
+  linkType: hard
+
+"ci-info@npm:^3.1.0, ci-info@npm:^3.1.1":
+  version: 3.2.0
+  resolution: "ci-info@npm:3.2.0"
+  checksum: d4a898d60111d00f2b7a06a349162971fe0603aefa208fe8d1343ce9e93c48e3d37311c47211d5c9040d25b43038c817588e5b7d8eab5d17b00aec49c7b5fade
   languageName: node
   linkType: hard
 
@@ -2882,6 +2900,17 @@ fsevents@~2.3.1:
   dependencies:
     binary-extensions: ^2.0.0
   checksum: 49a1446a3cf3719e91a061f0e52add18fd065325c652c277519a2ad333440dc8b449076a893277a46940ef16f05a908716667ca8f986b28c677b9acb11e10a36
+  languageName: node
+  linkType: hard
+
+"is-ci@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "is-ci@npm:3.0.0"
+  dependencies:
+    ci-info: ^3.1.1
+  bin:
+    is-ci: bin.js
+  checksum: 1e26d3ba6634ebee83f9d22f260354c5d950eada4d609c30cc2642069f8ba52f3aeb4c9bbf8099aaf04a2f44a1ed7beef2a24485f988753c8c078a57e9b3a2fd
   languageName: node
   linkType: hard
 
