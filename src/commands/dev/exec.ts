@@ -1,14 +1,19 @@
-import { Command, CommandOptions, Args } from '@sapphire/framework';
+import { CommandOptions, Args } from '@sapphire/framework';
 import { ApplyOptions } from '@sapphire/decorators';
 import { codeBlock } from '@sapphire/utilities';
 import { stripIndents } from 'common-tags';
 import type { Message } from 'discord.js';
-import { command } from 'execa';
+import Command from '@structures/Command';
+import { promisify } from 'util';
+import shell from 'shelljs';
+
+const command = promisify(shell.exec);
 
 @ApplyOptions<CommandOptions>({
     aliases: ['$'],
     description: 'Executes a shell command.',
     preconditions: ['OwnerOnly', 'GuildOnly'],
+    category: 'Developer',
 })
 export class ExecCommand extends Command {
     public async run(message: Message, args: Args) {
@@ -30,9 +35,9 @@ export class ExecCommand extends Command {
         try {
             const data = await command(input);
 
-            return { err: false, std: data.stderr };
+            return { err: false, std: data };
         } catch (err) {
-            return { err: true, std: err.message as string };
+            return { err: true, std: err as string };
         }
     }
 }

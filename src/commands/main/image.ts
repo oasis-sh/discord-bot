@@ -1,8 +1,9 @@
-import { SubCommandPluginCommand, SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
+import { SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
 import { createCanvas, loadImage, registerFont } from 'canvas';
 import { ApplyOptions } from '@sapphire/decorators';
 import renderEmoji from '@utils/canvas/renderEmoji';
 import type { Args } from '@sapphire/framework';
+import SubCommand from '@structures/SubCommand';
 import discordTime from '@utils/discordTime';
 import circle from '@utils/canvas/circle';
 import type { Message } from 'discord.js';
@@ -20,8 +21,9 @@ registerFont(join(__dirname, '..', '..', '..', 'fonts', 'whitneyMedium.otf'), {
     description: 'Image Manipulation commands.',
     aliases: ['img'],
     subCommands: ['quote', 'triggered'],
+    category: 'Main',
 })
-export class ImageCommand extends SubCommandPluginCommand {
+export class ImageCommand extends SubCommand {
     public async quote(message: Message, args: Args) {
         const member = (await args.pickResult('member')).value;
         const msg = await args.rest('string');

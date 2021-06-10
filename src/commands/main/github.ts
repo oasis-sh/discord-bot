@@ -1,7 +1,8 @@
-import { SubCommandPluginCommand, SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
+import { SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Message, MessageEmbed } from 'discord.js';
 import type { Args } from '@sapphire/framework';
+import SubCommand from '@structures/SubCommand';
 import { request } from '@octokit/request';
 import shorten from '@utils/shorten';
 
@@ -9,8 +10,9 @@ import shorten from '@utils/shorten';
     aliases: ['gh'],
     description: 'A github command.',
     subCommands: ['action', 'repo', 'user', 'issue', 'pr'],
+    category: 'Main',
 })
-export class GithubCommand extends SubCommandPluginCommand {
+export class GithubCommand extends SubCommand {
     public async action(message: Message, args: Args) {
         const branch = (await args.pickResult('string')).value ?? 'staging';
 

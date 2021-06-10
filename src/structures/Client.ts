@@ -15,6 +15,14 @@ declare module '@sapphire/framework' {
     interface ArgType {
         emoji: `${bigint}`;
     }
+
+    interface CommandOptions {
+        category: string;
+    }
+
+    interface Command {
+        category: string;
+    }
 }
 
 export class Client extends SapphireClient {

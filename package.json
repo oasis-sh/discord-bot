@@ -6,9 +6,12 @@
     "private": true,
     "scripts": {
         "test": "eslint .",
-        "build": "rimraf dist && tsc && tsc-alias",
+        "pre-build": "rimraf dist",
+        "build": "tsc",
+        "post-build": "tsc-alias",
         "prettier": "prettier . --write",
-        "start": "yarn db:generate && yarn build && pm2-runtime start dist/index.js",
+        "pre-start": "yarn db:generate && yarn build",
+        "start": "pm2-runtime start dist/index.js",
         "lint": "eslint . --fix",
         "db:generate": "prisma generate"
     },
@@ -50,11 +53,11 @@
         "discord-api-types": "^0.18.1",
         "discord.js": "dev",
         "dotenv": "^10.0.0",
-        "execa": "^5.1.1",
         "gifencoder": "^2.0.1",
         "pm2": "^4.5.6",
         "prisma": "^2.24.1",
         "reflect-metadata": "^0.1.13",
+        "shelljs": "^0.8.4",
         "tslib": "^2.2.0",
         "twemoji-parser": "^13.1.0",
         "weird-to-normal-chars": "^1.5.0"
@@ -67,6 +70,7 @@
         "@types/node-fetch": "^2.5.10",
         "@types/prettier": "^2",
         "@types/rimraf": "^3",
+        "@types/shelljs": "^0",
         "@types/twemoji-parser": "^12.1.0",
         "@typescript-eslint/eslint-plugin": "^4.26.0",
         "@typescript-eslint/parser": "^4.26.0",
@@ -91,7 +95,8 @@
             "@typescript-eslint/no-require-imports": "off",
             "@typescript-eslint/restrict-template-expressions": "off",
             "@typescript-eslint/prefer-for-of": "off",
-            "@typescript-eslint/switch-exhaustiveness-check": "off"
+            "@typescript-eslint/switch-exhaustiveness-check": "off",
+            "@typescript-eslint/dot-notation": "off"
         }
     },
     "prettier": {

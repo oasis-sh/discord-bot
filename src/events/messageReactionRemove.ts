@@ -10,6 +10,7 @@ export class MessageReactionRemoveEvent extends Event<'messageReactionRemove'> {
         const { guild, id } = reaction.message;
 
         if (!guild) return;
+        if (guild.id !== '826577772805095516') return;
 
         const member = await guild.members.fetch(user.id);
         const reactionRole = await this.context.client.db.reactionRole.findFirst({

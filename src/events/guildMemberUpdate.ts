@@ -4,6 +4,8 @@ import { stripIndents } from 'common-tags';
 
 export class GuildMemberUpdateEvent extends Event<'guildMemberUpdate'> {
     public async run(oldMember: PartialGuildMember | GuildMember, newMember: GuildMember) {
+        if (oldMember.guild.id !== '826577772805095516') return;
+
         const channel = this.context.client.channels.cache.get('850915437449314344') as TextChannel;
 
         if (oldMember.partial) oldMember = await oldMember.fetch();

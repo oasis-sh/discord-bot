@@ -5,6 +5,7 @@ import { stripIndents } from 'common-tags';
 export class GuildBanAddEvent extends Event<'guildBanAdd'> {
     public async run(ban: GuildBan) {
         if (ban.partial) ban = await ban.fetch();
+        if (ban.guild.id !== '826577772805095516') return;
 
         const channel = this.context.client.channels.cache.get('850915437449314344') as TextChannel;
         const auditLogs = await ban.guild.fetchAuditLogs({

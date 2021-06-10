@@ -1,5 +1,6 @@
-import { SubCommandPluginCommand, SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
+import { SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
 import { ApplyOptions } from '@sapphire/decorators';
+import SubCommand from '@structures/SubCommand';
 import type { Args } from '@sapphire/framework';
 import type { Message } from 'discord.js';
 
@@ -8,8 +9,9 @@ import type { Message } from 'discord.js';
     aliases: ['rr'],
     preconditions: ['AdminOnly', 'GuildOnly'],
     subCommands: ['add', 'remove'],
+    category: 'Admin',
 })
-export class ReactionRolesCommand extends SubCommandPluginCommand {
+export class ReactionRolesCommand extends SubCommand {
     public async add(message: Message, args: Args) {
         const channel = (await args.pickResult('textChannel')).value;
         const emoji = (await args.pickResult('emoji')).value;

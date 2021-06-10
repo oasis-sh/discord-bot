@@ -1,6 +1,7 @@
 import type { Message, PartialMessage, TextChannel } from 'discord.js';
 import { Event } from '@sapphire/framework';
 import { stripIndents } from 'common-tags';
+import shorten from '@utils/shorten';
 
 export class MessageUpdateEvent extends Event<'messageUpdate'> {
     public async run(oldMessage: PartialMessage | Message, newMessage: PartialMessage | Message) {
@@ -15,8 +16,8 @@ export class MessageUpdateEvent extends Event<'messageUpdate'> {
             channel.send(stripIndents`
                 **A message got edited!**
 
-                Old Content: \`${oldMessage.content}\`
-                New Content: \`${newMessage.content}\`
+                Old Content: \`${shorten(oldMessage.content, 750)}\`
+                New Content: \`${shorten(newMessage.content, 750)}\`
                 Link: https://discord.com/channels/826577772805095516/${newMessage.channel.id}/${newMessage.id}
             `);
     }

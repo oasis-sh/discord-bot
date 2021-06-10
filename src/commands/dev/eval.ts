@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { Args, Command, CommandOptions } from '@sapphire/framework';
+import { Args, CommandOptions } from '@sapphire/framework';
 import { codeBlock, isThenable } from '@sapphire/utilities';
 import { ApplyOptions } from '@sapphire/decorators';
 import type { Message } from 'discord.js';
+import Command from '@structures/Command';
 import { Type } from '@sapphire/type';
 import { inspect } from 'util';
 
@@ -11,6 +12,7 @@ import { inspect } from 'util';
     aliases: ['ev', 'debug'],
     description: 'Evaluates javascript code.',
     quotes: [],
+    category: 'Developer',
     preconditions: ['OwnerOnly', 'GuildOnly'],
     strategyOptions: {
         flags: ['async', 'hidden', 'showHidden', 'silent', 's'],

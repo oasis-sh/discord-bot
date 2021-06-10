@@ -1,15 +1,17 @@
-import { SubCommandPluginCommand, SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
+import { SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Message, MessageEmbed } from 'discord.js';
 import type { Args } from '@sapphire/framework';
+import SubCommand from '@structures/SubCommand';
 
 @ApplyOptions<SubCommandPluginCommandOptions>({
     aliases: ['t'],
     description: 'A subcommand of tag commands.',
     subCommands: ['show', 'create', 'del', 'edit', 'info', 'list'],
     preconditions: ['GuildOnly'],
+    category: 'Admin',
 })
-export class TagCommand extends SubCommandPluginCommand {
+export class TagCommand extends SubCommand {
     public async show(message: Message, args: Args) {
         const name = (await args.pickResult('string')).value;
         const data = await this.context.client.db.tag.findUnique({ where: { name } });
