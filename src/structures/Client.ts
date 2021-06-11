@@ -59,7 +59,12 @@ export class Client extends SapphireClient {
             logger: {
                 level: LogLevel.Trace,
             },
-            intents: [Intents.NON_PRIVILEGED, Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS],
+            intents: [
+                Intents.NON_PRIVILEGED,
+                Intents.FLAGS.GUILDS,
+                Intents.FLAGS.GUILD_MEMBERS,
+                Intents.FLAGS.GUILD_VOICE_STATES,
+            ],
             partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER'],
             presence: {
                 activities: [

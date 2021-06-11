@@ -267,6 +267,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/node-pre-gyp@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@discordjs/node-pre-gyp@npm:0.4.0"
+  dependencies:
+    detect-libc: ^1.0.3
+    https-proxy-agent: ^5.0.0
+    make-dir: ^3.1.0
+    node-fetch: ^2.6.1
+    nopt: ^5.0.0
+    npmlog: ^4.1.2
+    rimraf: ^3.0.2
+    semver: ^7.3.5
+    tar: ^6.1.0
+  bin:
+    node-pre-gyp: bin/node-pre-gyp
+  checksum: 9dd1ba56aeb0b048f5bb0e8b1570ceb6c4fc650150d4979ea49e6025e1cc015b6ef234896122b2c564d6be56ce920ebe6f28b66a084efda831e288acc4feb92b
+  languageName: node
+  linkType: hard
+
+"@discordjs/opus@npm:^0.5.2":
+  version: 0.5.2
+  resolution: "@discordjs/opus@npm:0.5.2"
+  dependencies:
+    "@discordjs/node-pre-gyp": ^0.4.0
+    node-addon-api: ^3.2.1
+  checksum: 21ff1d841b99f9ba244cf171de3536857309a034e4619bf274db3f716e9f8f22b314d0fbcde620528dd2fd27be266eba806fac2ddb888aa2719aa915a1d2d6c4
+  languageName: node
+  linkType: hard
+
+"@discordjs/voice@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@discordjs/voice@npm:0.3.0"
+  dependencies:
+    "@types/ws": ^7.4.4
+    discord-api-types: ^0.18.1
+    prism-media: ^1.2.9
+    tiny-typed-emitter: ^2.0.3
+    ws: ^7.4.4
+  checksum: cd458cc525c9fe4427c39df99a69ac24642cbd6b0b5dc8120d859e41895e0cdc82e5874b4bbba7f4099fb0d2bb04ac73f129bddca5a6abb97a784fae878ac7d5
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^0.4.2":
   version: 0.4.2
   resolution: "@eslint/eslintrc@npm:0.4.2"
@@ -373,6 +415,8 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^12.1.4
     "@commitlint/config-conventional": ^12.1.4
+    "@discordjs/opus": ^0.5.2
+    "@discordjs/voice": ^0.3.0
     "@naval-base/ms": ^3.1.0
     "@octokit/request": ^5.5.0
     "@prisma/client": ^2.24.1
@@ -391,6 +435,7 @@ __metadata:
     "@types/eslint-plugin-prettier": ^3
     "@types/gifencoder": ^2.0.1
     "@types/is-ci": ^3
+    "@types/libsodium-wrappers": ^0
     "@types/node-fetch": ^2.5.10
     "@types/prettier": ^2
     "@types/rimraf": ^3
@@ -410,6 +455,7 @@ __metadata:
     gifencoder: ^2.0.1
     husky: ^6.0.0
     is-ci: ^3.0.0
+    libsodium-wrappers: ^0.7.9
     pm2: ^4.5.6
     prettier: ^2.3.0
     prisma: ^2.24.1
@@ -419,6 +465,7 @@ __metadata:
     tio.js: ^1.0.9
     tsc-alias: ^1.2.11
     tslib: ^2.2.0
+    tweetnacl: ^1.0.3
     twemoji-parser: ^13.1.0
     typescript: ^4.3.2
     weird-to-normal-chars: ^1.5.0
@@ -817,6 +864,13 @@ __metadata:
   version: 7.0.7
   resolution: "@types/json-schema@npm:7.0.7"
   checksum: b9d2c509fa4e0b82f58e73f5e6ab76c60ff1884ba41bb82f37fb1cece226d4a3e5a62fedf78a43da0005373a6713d9abe61c1e592906402c41c08ad6ab26d52b
+  languageName: node
+  linkType: hard
+
+"@types/libsodium-wrappers@npm:^0":
+  version: 0.7.9
+  resolution: "@types/libsodium-wrappers@npm:0.7.9"
+  checksum: 22dc1e22092ad25f7d6708672738b4c7efd8086261c945ca59896f425e8debe6a287a9fcf2d0bc4b7f106a1e46ba14758f6c7cd2c7bd18c3ccab5024702d82c7
   languageName: node
   linkType: hard
 
@@ -3166,6 +3220,22 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"libsodium-wrappers@npm:^0.7.9":
+  version: 0.7.9
+  resolution: "libsodium-wrappers@npm:0.7.9"
+  dependencies:
+    libsodium: ^0.7.0
+  checksum: cf87d39cc7bcac1720e0d83fd52991a8ba2b2e4fb0c5c34ff0abae9fa46256ea7121a16b0158c473a3e0a6bbf8a61aa9266f0f60d61e0a06762c9c9588f78830
+  languageName: node
+  linkType: hard
+
+"libsodium@npm:^0.7.0":
+  version: 0.7.9
+  resolution: "libsodium@npm:0.7.9"
+  checksum: fc5f9d09830fd5049448e8a59593bfcb9149e805d67c3c19629aeae75dbfb86ff5af4d6cb5268934c6f636ca6ee4855ae288bb31555d3b4af627c649a31bab05
+  languageName: node
+  linkType: hard
+
 "lines-and-columns@npm:^1.1.6":
   version: 1.1.6
   resolution: "lines-and-columns@npm:1.1.6"
@@ -3539,6 +3609,15 @@ fsevents@~2.3.1:
   version: 2.0.2
   resolution: "netmask@npm:2.0.2"
   checksum: 17bfa2d1a2ee49c4385da07f3aa3403654efa4bcf2382b75a5abd3942ebc57846f82416612adc58b5e92723392bad1a5ae3310c2a922d529102a01b1671885a2
+  languageName: node
+  linkType: hard
+
+"node-addon-api@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "node-addon-api@npm:3.2.1"
+  dependencies:
+    node-gyp: latest
+  checksum: b4c69283fc7baa813e7f38085ee8cd3bd9fd1463a11621eb7e9be12cd494bfabd83b1e7880dc7f7a8d664f8545238ce310d61301b3c4ae608e6e49f4862c41e5
   languageName: node
   linkType: hard
 
@@ -3962,6 +4041,27 @@ fsevents@~2.3.1:
   bin:
     prettier: bin-prettier.js
   checksum: 652640cc8b71bc5277cfb8bf6f161783ca588efcf683c3d630837b39da8d57fef35c9e00ae5855a8e3c75136c42274046c913cc2b2d2968558315f31c6a26981
+  languageName: node
+  linkType: hard
+
+"prism-media@npm:^1.2.9":
+  version: 1.2.9
+  resolution: "prism-media@npm:1.2.9"
+  peerDependencies:
+    "@discordjs/opus": ^0.5.0
+    ffmpeg-static: ^4.2.7 || ^3.0.0 || ^2.4.0
+    node-opus: ^0.3.3
+    opusscript: ^0.0.8
+  peerDependenciesMeta:
+    "@discordjs/opus":
+      optional: true
+    ffmpeg-static:
+      optional: true
+    node-opus:
+      optional: true
+    opusscript:
+      optional: true
+  checksum: e266159eadac34f9b57b68113d7bc61deb66516d64a0696eb696349552f19321fd5952a8224997bf26f707aa0dbdeaa13e40417b4031239b323e9b13d852566c
   languageName: node
   linkType: hard
 
@@ -4778,6 +4878,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"tiny-typed-emitter@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "tiny-typed-emitter@npm:2.0.3"
+  checksum: 03245fe966ccee4b73efcd35a6c8fd39e591e6c7d347e046d2b1f2092006acd13d3db911889195b85fef6e9c0bfac08c996d7af274b1b98f1de9ed932920cd7b
+  languageName: node
+  linkType: hard
+
 "tio.js@npm:^1.0.9":
   version: 1.0.9
   resolution: "tio.js@npm:1.0.9"
@@ -4868,6 +4975,13 @@ fsevents@~2.3.1:
   version: 1.3.0
   resolution: "tv4@npm:1.3.0"
   checksum: b42500b93482dea7bffb8ecbf47653a35d35edbd916d163e29d849c93a0510b7d92c7e210c035640d9449ff5859f0371841aadce2508e48a0ec14e4f80bfe375
+  languageName: node
+  linkType: hard
+
+"tweetnacl@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "tweetnacl@npm:1.0.3"
+  checksum: 1188f3ef85db04d6dba632d211e481ae0a5805974491633ff60bd56ae3362312dfea1515e0d200685867b69ff212e8778e26923f8203e3c335064b07f620a6c7
   languageName: node
   linkType: hard
 
@@ -5107,7 +5221,7 @@ typescript@^4.3.2:
   languageName: node
   linkType: hard
 
-"ws@npm:^7.0.0, ws@npm:^7.4.6":
+"ws@npm:^7.0.0, ws@npm:^7.4.4, ws@npm:^7.4.6":
   version: 7.4.6
   resolution: "ws@npm:7.4.6"
   peerDependencies:

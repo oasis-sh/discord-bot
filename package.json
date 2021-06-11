@@ -44,6 +44,8 @@
         "node": ">=14.0.0"
     },
     "dependencies": {
+        "@discordjs/opus": "^0.5.2",
+        "@discordjs/voice": "^0.3.0",
         "@naval-base/ms": "^3.1.0",
         "@octokit/request": "^5.5.0",
         "@prisma/client": "^2.24.1",
@@ -63,12 +65,14 @@
         "discord.js": "dev",
         "dotenv": "^10.0.0",
         "gifencoder": "^2.0.1",
+        "libsodium-wrappers": "^0.7.9",
         "pm2": "^4.5.6",
         "prisma": "^2.24.1",
         "reflect-metadata": "^0.1.13",
         "shelljs": "^0.8.4",
         "tio.js": "^1.0.9",
         "tslib": "^2.2.0",
+        "tweetnacl": "^1.0.3",
         "twemoji-parser": "^13.1.0",
         "weird-to-normal-chars": "^1.5.0"
     },
@@ -80,6 +84,7 @@
         "@types/eslint-plugin-prettier": "^3",
         "@types/gifencoder": "^2.0.1",
         "@types/is-ci": "^3",
+        "@types/libsodium-wrappers": "^0",
         "@types/node-fetch": "^2.5.10",
         "@types/prettier": "^2",
         "@types/rimraf": "^3",
