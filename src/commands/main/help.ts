@@ -40,7 +40,7 @@ export class HelpCommand extends Command {
                 (command.subCommands as any)['entries'].map((sc: any) => `\`${sc.input}\``).join(' '),
             );
 
-        message.reply(embed);
+        message.reply({ embeds: [embed] });
     }
 
     private async menu(message: Message) {
@@ -54,16 +54,18 @@ export class HelpCommand extends Command {
             pages: [...categories.values()].map(
                 (category) => (index, pages) =>
                     new APIMessage(message.channel, {
-                        embed: new MessageEmbed()
-                            .setColor('RANDOM')
-                            .setTitle(category)
-                            .setDescription(
-                                this._commands
-                                    .filter((c) => c.category === category)
-                                    .map((cmd) => `\`${cmd.name}\``)
-                                    .join(' '),
-                            )
-                            .setFooter(`Page ${index + 1} / ${pages.length}`),
+                        embeds: [
+                            new MessageEmbed()
+                                .setColor('RANDOM')
+                                .setTitle(category)
+                                .setDescription(
+                                    this._commands
+                                        .filter((c) => c.category === category)
+                                        .map((cmd) => `\`${cmd.name}\``)
+                                        .join(' '),
+                                )
+                                .setFooter(`Page ${index + 1} / ${pages.length}`),
+                        ],
                     }),
             ),
         }).run(message.author, message.channel as TextChannel);

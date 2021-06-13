@@ -36,7 +36,7 @@ export class NPMCommand extends Command {
 
             if (data.description) embed.setDescription(data.description);
 
-            return message.reply(embed);
+            return message.reply({ embeds: [embed] });
         } catch (err) {
             return message.reply("I couldn't find any info about that package...");
         }

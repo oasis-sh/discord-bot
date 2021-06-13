@@ -11,6 +11,7 @@ export class MessageUpdateEvent extends Event<'messageUpdate'> {
         if (newMessage.partial) newMessage = await newMessage.fetch();
         if (!oldMessage.guild && !newMessage.guild) return;
         if (oldMessage.interaction && newMessage.interaction) return;
+        if (oldMessage.guild?.id !== '826577772805095516') return;
 
         if (oldMessage.content !== newMessage.content)
             channel.send(stripIndents`

@@ -89,7 +89,7 @@ export class TagCommand extends SubCommand {
             .setTimestamp(data.createdAt)
             .setColor('RANDOM');
 
-        message.reply({ embed });
+        message.reply({ embeds: [embed] });
     }
 
     public async list(message: Message) {

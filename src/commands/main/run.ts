@@ -24,11 +24,13 @@ export class RunCommand extends Command {
             message.channel.stopTyping();
 
             return message.reply({
-                embed: {
-                    description:
-                        'You seem to have provided an invalid language. See [this link](https://tio.run/languages.json "Languages List") to see a list of all languages!',
-                    color: 'RANDOM',
-                },
+                embeds: [
+                    {
+                        description:
+                            'You seem to have provided an invalid language. See [this link](https://tio.run/languages.json "Languages List") to see a list of all languages!',
+                        color: 'RANDOM',
+                    },
+                ],
             });
         }
 
