@@ -42,7 +42,8 @@
     },
     "homepage": "https://github.com/oasis-sh/discord-bot#readme",
     "engines": {
-        "node": ">=14.0.0"
+        "node": ">=14.0.0",
+        "yarn": ">=2"
     },
     "dependencies": {
         "@discordjs/opus": "^0.5.2",

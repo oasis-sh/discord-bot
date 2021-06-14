@@ -10,7 +10,6 @@ const db = prompt(chalk.yellowBright('What is the postgres db url?'));
 const env = stripIndents`
     DISCORD_TOKEN="${token}"
     DATABASE_URL="${db}"
-
 `;
 
 writeFileSync('./.env', env);
