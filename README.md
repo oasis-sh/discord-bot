@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/oasis-sh/oasis/raw/staging/assets/logos/png/oasis-logo-white.png" width="128" />
+<img src="https://raw.githubusercontent.com/oasis-sh/oasis/staging/assets/logos/svg/icon.svg" width="128" />
 
 # @oasis-sh/discord-bot
 
