@@ -16,7 +16,6 @@
         "lint": "eslint . --fix",
         "db:generate": "prisma generate",
         "postinstall": "is-ci || husky install",
-        "install": "node-gyp configure && node-gyp build",
         "setup": "node dist/utils/setup"
     },
     "repository": {
