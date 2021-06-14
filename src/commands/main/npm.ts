@@ -7,6 +7,7 @@ import Command from '@structures/Command';
 @ApplyOptions<CommandOptions>({
     description: 'Shows info about a NPM Package.',
     category: 'Main',
+    usage: '<package>',
 })
 export class NPMCommand extends Command {
     public async run(message: Message, args: Args) {

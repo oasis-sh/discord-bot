@@ -16,30 +16,32 @@
 
 ## Features
 
-- Written in TypeScript
-- Up-to-date with the Discord API
-- Uses the discord.js master branch
+-   Written in TypeScript
+-   Up-to-date with the Discord API
+-   Uses the discord.js master branch
 
 ## Setup
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) 14 onwards
-- [PostgreSQL](https://www.postgresql.org/)
-- [Yarn](https://yarnpkg.com) 2
-- [FFmpeg](https://www.ffmpeg.org/)
-- [Git](https://git-scm.com/)
-- [Libsodium](https://github.com/jedisct1/libsodium)
-- [TypeScript](https://typescriptlang.org)
+-   [Node.js](https://nodejs.org) 14 onwards
+-   [PostgreSQL](https://www.postgresql.org/)
+-   [Yarn](https://yarnpkg.com) 2
+-   [FFmpeg](https://www.ffmpeg.org/)
+-   [Git](https://git-scm.com/)
+-   [Libsodium](https://github.com/jedisct1/libsodium)
+-   [TypeScript](https://typescriptlang.org)
+-   [Python](https://python.org)
 
 ### Steps
 
 1. Clone the repository by using `git clone https://github.com/oasis-sh/discord-bot.git`
 2. Follow the instructions to install [node-canvas](https://github.com/Automattic/node-canvas/wiki) in your system
 3. Do `yarn install`
-4. Do `yarn setup` and follow the instructions
-5. Do `yarn start`
-6. Profit
+4. Build the files by using `yarn build`
+5. Do `yarn setup` and follow the instructions
+6. Do `yarn start`
+7. Profit
 
 ## Author
 
