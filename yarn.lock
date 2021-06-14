@@ -430,6 +430,7 @@ __metadata:
     "@sapphire/type": ^2.0.4
     "@sapphire/utilities": ^1.5.2
     "@skyra/editable-commands": ^1.0.0
+    "@types/bindings": ^1
     "@types/common-tags": ^1
     "@types/eslint": ^7
     "@types/eslint-plugin-prettier": ^3
@@ -443,7 +444,9 @@ __metadata:
     "@types/twemoji-parser": ^12.1.0
     "@typescript-eslint/eslint-plugin": ^4.26.0
     "@typescript-eslint/parser": ^4.26.0
+    bindings: ^1.5.0
     canvas: ^2.8.0
+    chalk: ^4.1.1
     common-tags: ^1.8.0
     discord-api-types: ^0.18.1
     discord.js: dev
@@ -456,6 +459,8 @@ __metadata:
     husky: ^6.0.0
     is-ci: ^3.0.0
     libsodium-wrappers: ^0.7.9
+    node-addon-api: ^3.2.1
+    node-gyp: ^8.1.0
     pm2: ^4.5.6
     prettier: ^2.3.0
     prisma: ^2.24.1
@@ -796,6 +801,15 @@ __metadata:
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
   checksum: d030f3fb14e0373dbf5005d8f696ff34fda87bf56744bea611fc737449bfc0687ebcb28ee8ba4c6624877f51b18d701c0d417d793f406006a192f4721911d048
+  languageName: node
+  linkType: hard
+
+"@types/bindings@npm:^1":
+  version: 1.5.0
+  resolution: "@types/bindings@npm:1.5.0"
+  dependencies:
+    "@types/node": "*"
+  checksum: ebbe127be681a3140bbe646f9c1c2eb052636e3c46e0994234bfe4dd26fb73c0be285d860152ab772287c3973a4059744dad6ac6bf1073506e616333cf376225
   languageName: node
   linkType: hard
 
@@ -1367,6 +1381,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bindings@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "bindings@npm:1.5.0"
+  dependencies:
+    file-uri-to-path: 1.0.0
+  checksum: bd623dec58f126eb0c30f04a20da7080f06cdd5af26bf5a91615e70055fbba66c4cec5c88b156e8181c1d822f2392034a40a9121ef3ebc25638dc2163332b12d
+  languageName: node
+  linkType: hard
+
 "blessed@npm:0.1.81":
   version: 0.1.81
   resolution: "blessed@npm:0.1.81"
@@ -1499,7 +1522,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0":
+"chalk@npm:^4.0.0, chalk@npm:^4.1.1":
   version: 4.1.1
   resolution: "chalk@npm:4.1.1"
   dependencies:
@@ -2371,6 +2394,13 @@ __metadata:
   dependencies:
     flat-cache: ^3.0.4
   checksum: af83a412143100405a995bb7d9a31982ebcfabe6c545dac2e787fc5580b2da74e253ef62968057fa5bbfaf0811a8b85623aeea776e16c77e3ce4c2488b0e4821
+  languageName: node
+  linkType: hard
+
+"file-uri-to-path@npm:1.0.0":
+  version: 1.0.0
+  resolution: "file-uri-to-path@npm:1.0.0"
+  checksum: 5ddb9682f04f6f87b7765b93306206db2f96bc86162487e27639c55fe3ffeed12c30906ef1dedaa5307d7cabbbbdcbfa299b79aaec435de0f17e17ab31bd20b3
   languageName: node
   linkType: hard
 
@@ -3628,7 +3658,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"node-gyp@npm:latest":
+"node-gyp@npm:^8.1.0, node-gyp@npm:latest":
   version: 8.1.0
   resolution: "node-gyp@npm:8.1.0"
   dependencies:

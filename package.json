@@ -7,7 +7,7 @@
     "scripts": {
         "test": "eslint .",
         "pre-build": "rimraf dist",
-        "build": "tsc",
+        "build": "tsc && node-gyp configure && node-gyp build",
         "post-build": "tsc-alias",
         "prettier": "prettier . --write",
         "pre-start": "yarn db:generate && yarn build",
@@ -15,7 +15,9 @@
         "pre-lint": "yarn constraints",
         "lint": "eslint . --fix",
         "db:generate": "prisma generate",
-        "postinstall": "is-ci || husky install"
+        "postinstall": "is-ci || husky install",
+        "install": "node-gyp configure && node-gyp build",
+        "setup": "node dist/utils/setup"
     },
     "repository": {
         "type": "git",
@@ -59,13 +61,17 @@
         "@sapphire/type": "^2.0.4",
         "@sapphire/utilities": "^1.5.2",
         "@skyra/editable-commands": "^1.0.0",
+        "bindings": "^1.5.0",
         "canvas": "^2.8.0",
+        "chalk": "^4.1.1",
         "common-tags": "^1.8.0",
         "discord-api-types": "^0.18.1",
         "discord.js": "dev",
         "dotenv": "^10.0.0",
         "gifencoder": "^2.0.1",
         "libsodium-wrappers": "^0.7.9",
+        "node-addon-api": "^3.2.1",
+        "node-gyp": "^8.1.0",
         "pm2": "^4.5.6",
         "prisma": "^2.24.1",
         "reflect-metadata": "^0.1.13",
@@ -79,6 +85,7 @@
     "devDependencies": {
         "@commitlint/cli": "^12.1.4",
         "@commitlint/config-conventional": "^12.1.4",
+        "@types/bindings": "^1",
         "@types/common-tags": "^1",
         "@types/eslint": "^7",
         "@types/eslint-plugin-prettier": "^3",
