@@ -1,5 +1,6 @@
 import { SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
 import { createCanvas, loadImage, registerFont } from 'canvas';
+import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { ApplyOptions } from '@sapphire/decorators';
 import renderEmoji from '@utils/canvas/renderEmoji';
 import type { Args } from '@sapphire/framework';
@@ -9,6 +10,7 @@ import circle from '@utils/canvas/circle';
 import type { Message } from 'discord.js';
 import shorten from '@utils/shorten';
 import GIFEncoder from 'gifencoder';
+import { subClass } from 'gm';
 import { join } from 'path';
 
 registerFont(join(__dirname, '..', '..', '..', 'fonts', 'whitneyMedium.otf'), {
@@ -17,10 +19,12 @@ registerFont(join(__dirname, '..', '..', '..', 'fonts', 'whitneyMedium.otf'), {
     style: 'normal',
 });
 
+const gm = subClass({ imageMagick: true });
+
 @ApplyOptions<SubCommandPluginCommandOptions>({
     description: 'Image Manipulation commands.',
     aliases: ['img'],
-    subCommands: ['quote', 'triggered'],
+    subCommands: ['quote', 'triggered', 'charcoal'],
     category: 'Main',
 })
 export class ImageCommand extends SubCommand {
@@ -114,5 +118,29 @@ export class ImageCommand extends SubCommand {
         gif.finish();
         message.channel.stopTyping();
         message.reply({ files: [{ attachment: gif.out.getData(), name: 'triggered.gif' }] });
+    }
+
+    public async charcoal(message: Message, args: Args) {
+        const member = (await args.pickResult('member')).value;
+
+        if (!member) return message.reply('You provided an invalid member.');
+
+        message.channel.startTyping();
+
+        const img = await fetch(member.user.displayAvatarURL({ format: 'png' }), FetchResultTypes.Buffer);
+
+        gm(img)
+            .charcoal(1)
+            .setFormat('png')
+            .toBuffer((err, buffer) => {
+                if (err) {
+                    this.context.logger.error(err);
+
+                    return message.channel.stopTyping();
+                }
+
+                message.channel.stopTyping();
+                message.reply({ files: [{ attachment: buffer, name: 'charcoal.png' }] });
+            });
     }
 }

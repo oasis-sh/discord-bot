@@ -7,7 +7,7 @@
     "scripts": {
         "test": "eslint .",
         "pre-build": "rimraf dist",
-        "build": "tsc && node-gyp configure && node-gyp build",
+        "build": "tsc && node-pre-gyp configure install build --fallback-to-build && node-pre-gyp build",
         "post-build": "tsc-alias",
         "prettier": "prettier . --write",
         "pre-start": "yarn db:generate && yarn build",
@@ -45,7 +45,16 @@
         "node": ">=14.0.0",
         "yarn": ">=2"
     },
+    "binary": {
+        "module_name": "prompt",
+        "module_path": "./prebuild/{module_name}-{node_abi}-{platform}-{arch}-{libc}-{libc_version}/",
+        "remote_path": "v{version}",
+        "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}-{libc}-{libc_version}.tar.gz",
+        "pkg_path": ".",
+        "host": "https://github.com/oasis-sh/discord-bot"
+    },
     "dependencies": {
+        "@discordjs/node-pre-gyp": "^0.4.0",
         "@discordjs/opus": "^0.5.2",
         "@discordjs/voice": "^0.3.0",
         "@naval-base/ms": "^3.1.0",
@@ -69,9 +78,9 @@
         "discord.js": "dev",
         "dotenv": "^10.0.0",
         "gifencoder": "^2.0.1",
+        "gm": "^1.23.1",
         "libsodium-wrappers": "^0.7.9",
         "node-addon-api": "^3.2.1",
-        "node-gyp": "^8.1.0",
         "pm2": "^4.5.6",
         "prisma": "^2.24.1",
         "reflect-metadata": "^0.1.13",
@@ -90,6 +99,7 @@
         "@types/eslint": "^7",
         "@types/eslint-plugin-prettier": "^3",
         "@types/gifencoder": "^2.0.1",
+        "@types/gm": "^1",
         "@types/is-ci": "^3",
         "@types/libsodium-wrappers": "^0",
         "@types/node-fetch": "^2.5.10",
