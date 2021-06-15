@@ -23,7 +23,7 @@ import Command from '@structures/Command';
 })
 export class GoogleCommand extends Command {
     public async run(message: Message, args: Args) {
-        const query = (await args.pickResult('string')).value;
+        const query = await args.rest('string');
         const data = await fetch<SearchResponse>(
             `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_KEY}&cx=${process.env.CUSTOM_SEARCH_ID}&safe=active&q=${query}`,
             FetchResultTypes.JSON,

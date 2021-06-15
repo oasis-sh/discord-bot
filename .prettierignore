@@ -2,3 +2,4 @@ dist/
 .yarn/
 .yarnrc.yml
 .github/
+docker-compose.yml

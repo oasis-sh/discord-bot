@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    ports:
+      - '3000:3000'
+    links:
+      - postgres
+    env_file: docker/.docker.env
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: oasisbot
+      POSTGRES_PASSWORD: youshallnotpass
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
