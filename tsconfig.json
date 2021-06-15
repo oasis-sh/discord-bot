@@ -27,5 +27,9 @@
             "@commands/*": ["src/slash-commands/*"],
             "@utils/*": ["src/utils/*"]
         }
-    }
+    },
+    "exclude": [
+        "node_modules/**/*",
+        "test/**/*"
+    ]
 }

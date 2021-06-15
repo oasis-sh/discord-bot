@@ -32,6 +32,7 @@
 -   [Libsodium](https://github.com/jedisct1/libsodium)
 -   [TypeScript](https://typescriptlang.org)
 -   [Python](https://python.org)
+-   [ImageMagick](https://imagemagick.org/)
 
 ### Steps
 
