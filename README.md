@@ -33,6 +33,7 @@
 -   [TypeScript](https://typescriptlang.org)
 -   [Python](https://python.org)
 -   [ImageMagick](https://imagemagick.org/)
+-   [Sentry](https://sentry.io)
 
 ### Steps
 

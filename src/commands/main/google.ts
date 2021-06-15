@@ -7,6 +7,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import Command from '@structures/Command';
 
 @ApplyOptions<CommandOptions>({
+    aliases: ['g'],
     description: 'Searches google for your query.',
     category: 'Main',
     usage: '<query>',

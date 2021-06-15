@@ -1,5 +1,5 @@
-import { Message, APIMessage, MessageEmbed, TextChannel } from 'discord.js';
-import { CommandOptions, Args, CommandStore } from '@sapphire/framework';
+import { CommandOptions, Args, CommandStore, PermissionsPrecondition } from '@sapphire/framework';
+import { Message, APIMessage, MessageEmbed, TextChannel, Permissions } from 'discord.js';
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { ApplyOptions } from '@sapphire/decorators';
 import SubCommand from '@structures/SubCommand';
@@ -11,6 +11,7 @@ import Command from '@structures/Command';
     detailedDescription: 'You can also provide a command, which will return info about that command.',
     category: 'Main',
     usage: '[command]',
+    preconditions: [new PermissionsPrecondition(Permissions.FLAGS.MANAGE_MESSAGES)],
 })
 export class HelpCommand extends Command {
     private _commands!: CommandStore;

@@ -1,6 +1,7 @@
 import '@skyra/editable-commands';
 
 import { LogLevel, SapphireClient, SapphireClientOptions } from '@sapphire/framework';
+import { init, captureException } from '@sentry/node';
 import { PrismaClient } from '@prisma/client';
 import { Intents } from 'discord.js';
 
@@ -10,6 +11,8 @@ declare module '@sapphire/framework' {
         owners: string[];
         admins: string[];
         mods: string[];
+
+        captureExecption: (err: Error) => string;
     }
 
     interface ArgType {
@@ -28,6 +31,7 @@ declare module '@sapphire/framework' {
 }
 
 export class Client extends SapphireClient {
+    public readonly captureExecption = (err: Error) => captureException(err);
     public readonly db = new PrismaClient();
     public readonly owners = ['566155739652030465']; // Tomio#1265
 
@@ -39,6 +43,7 @@ export class Client extends SapphireClient {
         '576580130344927243', // Anonymouse#5776
         '683579862526722049', // Angshu31#4021
         '566155739652030465', // Tomio#1265
+        '238469453191446531', // lilj#4941
     ];
 
     public readonly mods = [
@@ -53,7 +58,7 @@ export class Client extends SapphireClient {
     public constructor(options?: SapphireClientOptions) {
         super({
             ...options,
-            defaultPrefix: 'oasis ',
+            defaultPrefix: ['oasis ', 'o!'],
             regexPrefix: /^(hey +)?oasis[,! ]/i,
             caseInsensitiveCommands: true,
             logger: {
@@ -79,10 +84,16 @@ export class Client extends SapphireClient {
                 repliedUser: false,
                 parse: ['roles', 'users'],
             },
+            http: {
+                version: 8,
+            },
         });
     }
 
     public async login(token = process.env.DISCORD_TOKEN) {
+        await this.db.$connect();
+        init({ dsn: process.env.SENTRY_URL, tracesSampleRate: 1.0 });
+
         return super.login(token);
     }
 }

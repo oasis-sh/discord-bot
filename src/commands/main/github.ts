@@ -1,16 +1,19 @@
+import { Message, MessageEmbed, APIMessage, TextChannel, Permissions } from 'discord.js';
 import { SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';
+import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { ApplyOptions } from '@sapphire/decorators';
-import { Message, MessageEmbed } from 'discord.js';
 import type { Args } from '@sapphire/framework';
 import SubCommand from '@structures/SubCommand';
 import { request } from '@octokit/request';
+import trending from 'trending-github';
 import shorten from '@utils/shorten';
 
 @ApplyOptions<SubCommandPluginCommandOptions>({
     aliases: ['gh'],
     description: 'A github command.',
-    subCommands: ['action', 'repo', 'user', 'issue', 'pr'],
+    subCommands: ['action', 'repo', 'user', 'issue', 'pr', 'trending'],
     category: 'Main',
+    preconditions: ['GuildOnly'],
 })
 export class GithubCommand extends SubCommand {
     public async action(message: Message, args: Args) {
@@ -146,5 +149,30 @@ export class GithubCommand extends SubCommand {
         } catch (err) {
             if (err.message === 'Not Found') return message.reply("I couldn't find that pull request...");
         }
+    }
+
+    public async trending(message: Message) {
+        if (!message.guild?.me?.permissionsIn(message.channel).has(Permissions.FLAGS.MANAGE_MESSAGES))
+            return message.reply('I need the `Manage Messages` permission for this command to work!');
+
+        const data = await trending();
+
+        new PaginatedMessage({
+            pages: data.map(
+                (item) => (index, pages) =>
+                    new APIMessage(message.channel, {
+                        embeds: [
+                            new MessageEmbed()
+                                .setTitle(item.name)
+                                .setURL(item.href)
+                                .setDescription(item.description ?? '')
+                                .setAuthor(item.author)
+                                .addField('Added Stars', String(item.starsInPeriod ?? 0))
+                                .setColor('RANDOM')
+                                .setFooter(`Page ${index + 1} / ${pages.length}`),
+                        ],
+                    }),
+            ),
+        }).run(message.author, message.channel as TextChannel);
     }
 }
