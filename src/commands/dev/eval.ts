@@ -14,7 +14,7 @@ import { inspect } from 'util';
     quotes: [],
     category: 'Developer',
     usage: '<script>',
-    preconditions: ['OwnerOnly', 'GuildOnly'],
+    preconditions: ['OwnerOnly'],
     strategyOptions: {
         flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
         options: ['depth'],
@@ -22,7 +22,10 @@ import { inspect } from 'util';
 })
 export class EvalCommand extends Command {
     public async run(message: Message, args: Args) {
-        const code = await args.rest('string');
+        const code = (await args.rest('string'))
+            .replaceAll('process.env', 'throw new Error("nice try")')
+            .replaceAll('dotenv', '--REDACTED--')
+            .replaceAll('.env', '--REDACTED--');
 
         const { result, success, type } = await this.eval(code, {
             message,
@@ -80,6 +83,21 @@ export class EvalCommand extends Command {
                 showHidden: flags.showHidden,
             });
         }
+
+        result = result
+            .replaceAll(client.token!, '--REDACTED--')
+            .replaceAll(process.env.DATABASE_URL!, '--REDACTED--')
+            .replaceAll(process.env.DISCORD_TOKEN!, '--REDACTED--')
+            .replaceAll(process.env.GOOGLE_KEY!, '--REDACTED--')
+            .replaceAll(process.env.CUSTOM_SEARCH_ID!, '--REDACTED--')
+            .replaceAll(process.env.SENTRY_URL!, '--REDACTED--')
+            .replaceAll(process.env.PGHOST!, '--REDACTED--')
+            .replaceAll(process.env.PGPORT!, '--REDACTED--')
+            .replaceAll(process.env.PGUSER!, '--REDACTED--')
+            .replaceAll(process.env.PGDATABASE!, '--REDACTED--')
+            .replaceAll(process.env.PGPASSWORD!, '--REDACTED--')
+            .replaceAll(process.env.RAILWAY_STATIC_URL!, '--REDACTED--')
+            .replaceAll(process.env.HOSTNAME!, '--REDACTED--');
 
         return { result, success, type };
     }

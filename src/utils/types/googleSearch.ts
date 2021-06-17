@@ -1,4 +1,6 @@
 interface ItemData {
+    [key: string]: any;
+
     title: string;
     link: string;
     snippet: string;

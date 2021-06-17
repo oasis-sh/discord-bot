@@ -24,7 +24,7 @@ const gm = subClass({ imageMagick: true });
 @ApplyOptions<SubCommandPluginCommandOptions>({
     description: 'Image Manipulation commands.',
     aliases: ['img'],
-    subCommands: ['quote', 'triggered', 'charcoal'],
+    subCommands: ['quote', 'triggered', 'charcoal', 'spank'],
     category: 'Main',
 })
 export class ImageCommand extends SubCommand {
@@ -142,5 +142,26 @@ export class ImageCommand extends SubCommand {
                 message.channel.stopTyping();
                 message.reply({ files: [{ attachment: buffer, name: 'charcoal.png' }] });
             });
+    }
+
+    public async spank(message: Message, args: Args) {
+        const member = (await args.pickResult('member')).value;
+
+        if (!member) return message.reply('You provided an invalid member.');
+
+        message.channel.startTyping();
+
+        const base = await loadImage(join(__dirname, '..', '..', '..', 'images', 'spank.png'));
+        const image = await loadImage(message.author.displayAvatarURL({ format: 'png' }));
+        const avatar = await loadImage(member.user.displayAvatarURL({ format: 'png' }));
+        const canvas = createCanvas(500, 500);
+        const ctx = canvas.getContext('2d');
+
+        ctx.drawImage(base, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(avatar, 350, 220, 120, 120);
+        ctx.drawImage(image, 225, 5, 140, 140);
+
+        message.channel.stopTyping();
+        message.reply({ files: [{ attachment: canvas.toBuffer(), name: 'spank.png' }] });
     }
 }

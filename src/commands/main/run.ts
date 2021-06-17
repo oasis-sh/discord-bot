@@ -14,11 +14,11 @@ import run from 'tio.js';
 })
 export class RunCommand extends Command {
     public async run(message: Message, args: Args) {
-        message.channel.startTyping();
-
         const lang = (await args.pickResult('string')).value;
         const code = parseCodeBlock(await args.rest('string')).code;
         const langs = await run.languages();
+
+        message.channel.startTyping();
 
         if (!langs.includes(lang!)) {
             message.channel.stopTyping();

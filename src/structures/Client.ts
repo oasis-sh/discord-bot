@@ -1,5 +1,3 @@
-import '@skyra/editable-commands';
-
 import { LogLevel, SapphireClient, SapphireClientOptions } from '@sapphire/framework';
 import { init, captureException } from '@sentry/node';
 import { PrismaClient } from '@prisma/client';
@@ -33,7 +31,7 @@ declare module '@sapphire/framework' {
 export class Client extends SapphireClient {
     public readonly captureExecption = (err: Error) => captureException(err);
     public readonly db = new PrismaClient();
-    public readonly owners = ['566155739652030465']; // Tomio#1265
+    public readonly owners = ['566155739652030465', '822545100118818827', '788455517202677761', '576580130344927243'];
 
     public readonly admins = [
         '822545100118818827', // bereket#9999
