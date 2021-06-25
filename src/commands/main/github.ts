@@ -74,27 +74,27 @@ export class GithubCommand extends SubCommand {
             const { data } = await request('GET /users/{username}', { username });
             if (data.type === 'User') {
                 const embed = new MessageEmbed()
-                .setTitle(data.login)
-                .setURL(data.html_url)
-                .setThumbnail(data.avatar_url)
-                .setTimestamp(data.updated_at)
-                .setDescription(data.bio ?? '')
-                .addField('Repositories', String(data.public_repos), true)
-                .addField('Gists', String(data.public_gists), true)
-                .addField('Followers', String(data.followers), true)
-                .setFooter('Last updated at')
-                .setColor('RANDOM');
+                    .setTitle(data.login)
+                    .setURL(data.html_url)
+                    .setThumbnail(data.avatar_url)
+                    .setTimestamp(data.updated_at)
+                    .setDescription(data.bio ?? '')
+                    .addField('Repositories', String(data.public_repos), true)
+                    .addField('Gists', String(data.public_gists), true)
+                    .addField('Followers', String(data.followers), true)
+                    .setFooter('Last updated at')
+                    .setColor('RANDOM');
                 message.reply({ embeds: [embed] });
             } else {
                 const embed = new MessageEmbed()
-                .setTitle(data.login)
-                .setURL(data.html_url)
-                .setThumbnail(data.avatar_url)
-                .setTimestamp(data.updated_at)
-                .setDescription(data.bio ?? '')
-                .addField('Repositories', String(data.public_repos), true)
-                .setFooter('Last updated at')
-                .setColor('RANDOM');
+                    .setTitle(data.login)
+                    .setURL(data.html_url)
+                    .setThumbnail(data.avatar_url)
+                    .setTimestamp(data.updated_at)
+                    .setDescription(data.bio ?? '')
+                    .addField('Repositories', String(data.public_repos), true)
+                    .setFooter('Last updated at')
+                    .setColor('RANDOM');
                 message.reply({ embeds: [embed] });
             }
 
