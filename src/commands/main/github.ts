@@ -72,19 +72,32 @@ export class GithubCommand extends SubCommand {
         try {
             const username = (await args.pickResult('string')).value as string;
             const { data } = await request('GET /users/{username}', { username });
-            const embed = new MessageEmbed()
-                .setTitle(data.login)
-                .setURL(data.html_url)
-                .setThumbnail(data.avatar_url)
-                .setTimestamp(data.updated_at)
-                .setDescription(data.bio ?? '')
-                .addField('Repositories', String(data.public_repos), true)
-                .addField('Gists', String(data.public_gists), true)
-                .addField('Followers', String(data.followers), true)
-                .setFooter('Last updated at')
-                .setColor('RANDOM');
+            if (data.type === 'User') {
+                const embed = new MessageEmbed()
+                    .setTitle(data.login)
+                    .setURL(data.html_url)
+                    .setThumbnail(data.avatar_url)
+                    .setTimestamp(data.updated_at)
+                    .setDescription(data.bio ?? '')
+                    .addField('Repositories', String(data.public_repos), true)
+                    .addField('Gists', String(data.public_gists), true)
+                    .addField('Followers', String(data.followers), true)
+                    .setFooter('Last updated at')
+                    .setColor('RANDOM');
+                message.reply({ embeds: [embed] });
+            } else {
+                const embed = new MessageEmbed()
+                    .setTitle(data.login)
+                    .setURL(data.html_url)
+                    .setThumbnail(data.avatar_url)
+                    .setTimestamp(data.updated_at)
+                    .setDescription(data.bio ?? '')
+                    .addField('Repositories', String(data.public_repos), true)
+                    .setFooter('Last updated at')
+                    .setColor('RANDOM');
+                message.reply({ embeds: [embed] });
+            }
 
-            message.reply({ embeds: [embed] });
         } catch (err) {
             if (err.message === 'Not Found') return message.reply("I couldn't find that user...");
         }
