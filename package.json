@@ -11,7 +11,7 @@
         "post-build": "tsc-alias",
         "prettier": "prettier . --write",
         "pre-start": "yarn db:generate && yarn build",
-        "start": "pm2-runtime start dist/index.js",
+        "start": "pm2 start dist/index.js --name oasis",
         "pre-lint": "yarn constraints",
         "lint": "eslint . --fix",
         "db:generate": "prisma generate",
