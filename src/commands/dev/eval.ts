@@ -91,13 +91,9 @@ export class EvalCommand extends Command {
             .replaceAll(process.env.GOOGLE_KEY!, '--REDACTED--')
             .replaceAll(process.env.CUSTOM_SEARCH_ID!, '--REDACTED--')
             .replaceAll(process.env.SENTRY_URL!, '--REDACTED--')
-            .replaceAll(process.env.PGHOST!, '--REDACTED--')
-            .replaceAll(process.env.PGPORT!, '--REDACTED--')
-            .replaceAll(process.env.PGUSER!, '--REDACTED--')
-            .replaceAll(process.env.PGDATABASE!, '--REDACTED--')
-            .replaceAll(process.env.PGPASSWORD!, '--REDACTED--')
             .replaceAll(process.env.RAILWAY_STATIC_URL!, '--REDACTED--')
-            .replaceAll(process.env.HOSTNAME!, '--REDACTED--');
+            .replaceAll(process.env.HOSTNAME!, '--REDACTED--')
+            .replaceAll(process.env.USER!, '--REDACTED--');
 
         return { result, success, type };
     }
