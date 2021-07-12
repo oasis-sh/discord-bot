@@ -1052,7 +1052,6 @@ __metadata:
     "@sapphire/plugin-subcommands": ^1.0.5
     "@sapphire/type": ^2.0.9
     "@sapphire/utilities": ^1.5.3
-    "@sentry/node": ^6.7.0
     "@skyra/editable-commands": ^1.0.0
     "@types/bindings": ^1
     "@types/common-tags": ^1
@@ -1437,88 +1436,6 @@ __metadata:
   version: 1.5.3
   resolution: "@sapphire/utilities@npm:1.5.3"
   checksum: 800baeb175be8a0614b81adc7c811ae68f398c5fcc0c23c243b4f415bcbe47b23d4192efa12c104cf2c5dbf9a28b171cccc65199f65c88bb509c630d4fa83682
-  languageName: node
-  linkType: hard
-
-"@sentry/core@npm:6.7.0":
-  version: 6.7.0
-  resolution: "@sentry/core@npm:6.7.0"
-  dependencies:
-    "@sentry/hub": 6.7.0
-    "@sentry/minimal": 6.7.0
-    "@sentry/types": 6.7.0
-    "@sentry/utils": 6.7.0
-    tslib: ^1.9.3
-  checksum: 968e3d908937564cd68efebb1a935dabdd5f62a53362da929ccda85dfa1e16c097ccc14ff023f30cc0d137d5c85ff8ca090a402c311b67c424f6600b5aeb21fb
-  languageName: node
-  linkType: hard
-
-"@sentry/hub@npm:6.7.0":
-  version: 6.7.0
-  resolution: "@sentry/hub@npm:6.7.0"
-  dependencies:
-    "@sentry/types": 6.7.0
-    "@sentry/utils": 6.7.0
-    tslib: ^1.9.3
-  checksum: 12e7e273ab22b72b58b5de691a0e0ee859e3be12bafb477c8bb891a359d0e1abbfd43e2fa30828ff02d445b1439ddd151e992b3d865f270cd8d6226eaacc7387
-  languageName: node
-  linkType: hard
-
-"@sentry/minimal@npm:6.7.0":
-  version: 6.7.0
-  resolution: "@sentry/minimal@npm:6.7.0"
-  dependencies:
-    "@sentry/hub": 6.7.0
-    "@sentry/types": 6.7.0
-    tslib: ^1.9.3
-  checksum: e3833ac5229e60e255021ac6c2f53d604e3afa030064231e386ea09e78eeffd49770ce89d2a23d9c11de9b07ca506cfd5520626e3e3c8cb3c03c5283ae4ca4f2
-  languageName: node
-  linkType: hard
-
-"@sentry/node@npm:^6.7.0":
-  version: 6.7.0
-  resolution: "@sentry/node@npm:6.7.0"
-  dependencies:
-    "@sentry/core": 6.7.0
-    "@sentry/hub": 6.7.0
-    "@sentry/tracing": 6.7.0
-    "@sentry/types": 6.7.0
-    "@sentry/utils": 6.7.0
-    cookie: ^0.4.1
-    https-proxy-agent: ^5.0.0
-    lru_map: ^0.3.3
-    tslib: ^1.9.3
-  checksum: 206d76a7e99eca9323385b68deef40d57e27fb54da63e6ba5fe020b212fdfbdaf91c656a1e5fb1b5e098b8344dd3b1c3db79088106018e5b8ff0d8a5e939a03c
-  languageName: node
-  linkType: hard
-
-"@sentry/tracing@npm:6.7.0":
-  version: 6.7.0
-  resolution: "@sentry/tracing@npm:6.7.0"
-  dependencies:
-    "@sentry/hub": 6.7.0
-    "@sentry/minimal": 6.7.0
-    "@sentry/types": 6.7.0
-    "@sentry/utils": 6.7.0
-    tslib: ^1.9.3
-  checksum: bc556d20165a36b622bc852e498f6c0c0e0d3dc2bc3c3fbbacc1adf18947e47f1e3adb089e3ceb1e3e991a2e28b3441a2a14578cd2022b9e8b2447c7e997b1f2
-  languageName: node
-  linkType: hard
-
-"@sentry/types@npm:6.7.0":
-  version: 6.7.0
-  resolution: "@sentry/types@npm:6.7.0"
-  checksum: 1447219bfc945ce886e9eb89caa4bc2da43930a0023a6a04e6e8bd365e8bcca53a1460bf8903aac99e8fed4dc8a83ea3ab9a78aa2c81a5b99c0c882233fff790
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:6.7.0":
-  version: 6.7.0
-  resolution: "@sentry/utils@npm:6.7.0"
-  dependencies:
-    "@sentry/types": 6.7.0
-    tslib: ^1.9.3
-  checksum: f77dcc9c84dc68a322be45b3acc424b4f8ed0d7ce58e99fe5542595f662658118501ddf87bd8135962a7a55cbfc54d3ce1571ac9384077d9a16d76178e822b38
   languageName: node
   linkType: hard
 
@@ -3004,13 +2921,6 @@ __metadata:
   dependencies:
     safe-buffer: ~5.1.1
   checksum: b10fbf041e3221c65e1ab67f05c8fcbad9c5fd078c62f4a6e05cb5fddc4b5a0e8a17c6a361c6a44f011b1a0c090b36aa88543be9dfa65da8c9e7f39c5de2d4df
-  languageName: node
-  linkType: hard
-
-"cookie@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "cookie@npm:0.4.1"
-  checksum: b8e0928e3e7aba013087974b33a6eec730b0a68b7ec00fc3c089a56ba2883bcf671252fc2ed64775aa1ca64796b6e1f6fdddba25a66808aef77614d235fd3e06
   languageName: node
   linkType: hard
 
@@ -5745,13 +5655,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru_map@npm:^0.3.3":
-  version: 0.3.3
-  resolution: "lru_map@npm:0.3.3"
-  checksum: c1d5347da0658d31f9440496c97e87cc67f201f79e46e9f83dd4cf3766cc93f021c6226f900f096d0e357913cad290c7d464ac632e5e124efbdb2af1da08774c
-  languageName: node
-  linkType: hard
-
 "make-dir@npm:^3.0.0, make-dir@npm:^3.1.0":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
@@ -7851,7 +7754,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.8.1, tslib@npm:^1.9.3":
+"tslib@npm:^1.8.1":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: f44fe7f216946b17d3e3074df3746372703cf24e9127b4c045511456e8e4bf25515fb0a1bb3937676cc305651c5d4fcb6377b0588a4c6a957e748c4c28905d17

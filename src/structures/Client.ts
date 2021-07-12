@@ -1,5 +1,4 @@
 import { LogLevel, SapphireClient, SapphireClientOptions } from '@sapphire/framework';
-import { init, captureException } from '@sentry/node';
 import { PrismaClient } from '@prisma/client';
 import { Intents } from 'discord.js';
 
@@ -90,7 +89,6 @@ export class Client extends SapphireClient {
 
     public async login(token = process.env.DISCORD_TOKEN) {
         await this.db.$connect();
-        init({ dsn: process.env.SENTRY_URL, tracesSampleRate: 1.0 });
 
         return super.login(token);
     }
