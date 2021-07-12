@@ -13,5 +13,6 @@ RUN apk update && \
 
 COPY . .
 
-RUN ["yarn db:generate && yarn build"]
+RUN ["yarn", "db:generate"]
+RUN ["yarn", "build"]
 CMD ["pm2-runtime", "dist/index.js"]
