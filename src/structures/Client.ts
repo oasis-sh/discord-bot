@@ -28,7 +28,6 @@ declare module '@sapphire/framework' {
 }
 
 export class Client extends SapphireClient {
-    public readonly captureExecption = (err: Error) => captureException(err);
     public readonly db = new PrismaClient();
     public readonly owners = ['566155739652030465', '822545100118818827', '788455517202677761', '576580130344927243'];
 
